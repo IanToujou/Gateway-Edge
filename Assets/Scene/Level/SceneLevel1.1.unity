@@ -1075,8 +1075,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce808cdc915d2c54fa721d9242cbe44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1542494445}
-  child: {fileID: 2135913561}
+  minDistance: 5
+  cameraFocus: {fileID: 2135913561}
   speed: 1
 --- !u!1 &2100796205
 GameObject:
