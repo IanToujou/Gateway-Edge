@@ -14,19 +14,11 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
         
-        float z = baseSpeed / 100;
-
-        Vector3 direction = new Vector3(0, 0, z);
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
-        if(horizontal >= 0.05f || horizontal <= -0.05f) {
-
-            //Rotate player
-
-        }
-
-        controller.Move(direction);
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        
+        Vector3 direction = new Vector3(horizontal, 0, vertical);
+        transform.Translate(direction * baseSpeed * Time.deltaTime, Space.World);
         
     }
 
