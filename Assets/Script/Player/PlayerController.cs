@@ -1,30 +1,36 @@
-    using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     
-    [SerializeField] private float baseSpeed = 1.0f;
-    [SerializeField] private float rotationSpeed = 1.5f;
-    [SerializeField] private float boostSpeed = 1.5f;
-    [SerializeField] private float brakeForce = 2.0f;
-    [SerializeField] private float maxSpeed = 20.0f;
-    [SerializeField] private float minSpeed = 0.5f;
+    [SerializeField] private float baseSpeed = 5.0f;
+    [SerializeField] private float forwardSpeed = 0.4f;
+
+    private Rigidbody rigidBody;
+    private Camera cam;
+
+    void Start() {
+        rigidBody = gameObject.GetComponent<Rigidbody>();
+        cam = FindObjectOfType<Camera>();
+    }
 
     void FixedUpdate() {
-        
-        //Movement
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        
-        Vector3 targetVector = new Vector3(horizontal, 0, vertical);
-        Vector3 targetPosition = Quaternion.Euler(0, gameObject.transform.eulerAngles.y, 0) * targetVector;
 
-        gameObject.transform.position = targetPosition;
+        Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 
-        //Rotate towards moving direction
-        Quaternion rotation = Quaternion.LookRotation(targetVector);
-        transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, rotation, rotationSpeed);
+        float rayLength;
+        if(groundPlane.Raycast(cameraRay, out rayLength)) {
+
+            Vector3 rayPoint = cameraRay.GetPoint(rayLength);
+            Debug.DrawLine(cameraRay.origin, rayPoint, Color.blue);
+
+            Vector3 pointToLook = new Vector3(rayPoint.x, transform.position.y, rayPoint.z);
+            transform.LookAt(pointToLook);
+
+            Vector3 pointToMove = new Vector3(pointToLook.x, pointToLook.y, pointToLook.z);
+            transform.position = Vector3.MoveTowards(transform.position, pointToMove, baseSpeed * Time.deltaTime);
+
+        }
 
     }
 
