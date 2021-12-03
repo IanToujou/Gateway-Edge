@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     
-    [SerializeField] private float baseSpeed = 5.0f;
+    [SerializeField] private float baseSpeed = 20.0f;
     [SerializeField] private float maxSpeed = 1.0f;
     [SerializeField] private float rotationSpeed = 30.0f;
     [SerializeField] private float boostAmount = 3f;
@@ -37,14 +37,9 @@ public class PlayerController : MonoBehaviour {
 
             Vector3 pointToMove = new Vector3(pointToLook.x, pointToLook.y, pointToLook.z);
 
-            rb.velocity = (pointToMove.normalized * baseSpeed);
-            Debug.Log(pointToMove);
-            
-            /*if(boostKey) {
-                transform.position = Vector3.MoveTowards(transform.position, pointToMove, baseSpeed * Time.deltaTime + boostAmount);
-            } else {
-                transform.position = Vector3.MoveTowards(transform.position, pointToMove, baseSpeed * Time.deltaTime);
-            }*/
+            //rb.velocity = (pointToMove.normalized * baseSpeed);
+
+            transform.position = Vector3.MoveTowards(transform.position, pointToMove, baseSpeed * Time.deltaTime);
 
         }
 
