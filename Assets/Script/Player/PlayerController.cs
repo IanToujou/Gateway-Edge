@@ -3,9 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     
     [SerializeField] private float baseSpeed = 20.0f;
-    [SerializeField] private float maxSpeed = 1.0f;
-    [SerializeField] private float rotationSpeed = 30.0f;
-    [SerializeField] private float boostAmount = 3f;
+    [SerializeField] private float rotationSpeed = 10.0f;
 
     private Camera cam;
     private Rigidbody rb;
@@ -18,10 +16,14 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        bool boostKey = (Input.GetAxisRaw("Vertical") >= 0.5f);
+        Vector3 moveInput = new Vector3(0, 0, 0);
     }
 
     void FixedUpdate() {
+        
+        //player: transform.positon
+        //mouse: rayPoint
+        //origin: 0, 0, 0
 
         Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -30,16 +32,19 @@ public class PlayerController : MonoBehaviour {
         if(groundPlane.Raycast(cameraRay, out rayLength)) {
 
             Vector3 rayPoint = cameraRay.GetPoint(rayLength);
-            Debug.DrawLine(cameraRay.origin, rayPoint, Color.blue);
-
             Vector3 pointToLook = new Vector3(rayPoint.x, transform.position.y, rayPoint.z);
-            transform.LookAt(pointToLook);
 
-            Vector3 pointToMove = new Vector3(pointToLook.x, pointToLook.y, pointToLook.z);
+            //Vector3 eulerAngleVelocity = new Vector3(0, 100, 0);
+            //Quaternion deltaRotation = Quaternion.Euler(eulerAngleVelocity * Time.fixedDeltaTime);
+            //rb.MoveRotation(rb.rotation * deltaRotation);
 
-            //rb.velocity = (pointToMove.normalized * baseSpeed);
+            Vector3 pointToMove = Vector3.RotateTowards(rb.rotation.eulerAngles, pointToLook - transform.position, Mathf.PI / 2, 0.5f);
+            //rb.MoveRotation(Quaternion.Euler(Vector3.Cross(rb.rotation.eulerAngles, pointToLook - transform.position) * 0.02f));
 
-            transform.position = Vector3.MoveTowards(transform.position, pointToMove, baseSpeed * Time.deltaTime);
+            Quaternion targetRotation = Quaternion.LookRotation(pointToMove);
+
+            rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, 0.1f);
+            rb.velocity = pointToMove.normalized * 50 * baseSpeed * Time.deltaTime;
 
         }
 
