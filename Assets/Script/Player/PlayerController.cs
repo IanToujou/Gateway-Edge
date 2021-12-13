@@ -7,12 +7,10 @@ public class PlayerController : MonoBehaviour {
 
     private Camera cam;
     private Rigidbody rb;
-    private bool boostKey;
 
     void Start() {
         cam = FindObjectOfType<Camera>();
         rb = GetComponent<Rigidbody>();
-        boostKey = false;
     }
 
     void Update() {
@@ -20,10 +18,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        
-        //player: transform.positon
-        //mouse: rayPoint
-        //origin: 0, 0, 0
 
         Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -34,12 +28,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 rayPoint = cameraRay.GetPoint(rayLength);
             Vector3 pointToLook = new Vector3(rayPoint.x, transform.position.y, rayPoint.z);
 
-            //Vector3 eulerAngleVelocity = new Vector3(0, 100, 0);
-            //Quaternion deltaRotation = Quaternion.Euler(eulerAngleVelocity * Time.fixedDeltaTime);
-            //rb.MoveRotation(rb.rotation * deltaRotation);
-
             Vector3 pointToMove = Vector3.RotateTowards(rb.rotation.eulerAngles, pointToLook - transform.position, Mathf.PI / 2, 0.5f);
-            //rb.MoveRotation(Quaternion.Euler(Vector3.Cross(rb.rotation.eulerAngles, pointToLook - transform.position) * 0.02f));
 
             Quaternion targetRotation = Quaternion.LookRotation(pointToMove);
 
