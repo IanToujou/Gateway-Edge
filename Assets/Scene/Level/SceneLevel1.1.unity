@@ -34709,8 +34709,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe7299f57890924383dae9814e3b278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 10
-  rotationSpeed: 10
+  baseSpeed: 5
+  rotationSpeed: 0.3
+  maxSpeed: 30
 --- !u!54 &1542494448
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36274,7 +36275,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16854
+  m_Name: pb_Mesh16852
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

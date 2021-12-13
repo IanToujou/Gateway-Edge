@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     
-    [SerializeField] private float baseSpeed = 20.0f;
-    [SerializeField] private float rotationSpeed = 10.0f;
+    [SerializeField] private float baseSpeed;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float maxSpeed;
 
     private Camera cam;
     private Rigidbody rb;
+    private float speedMultiplier;
 
     void Start() {
         cam = FindObjectOfType<Camera>();
         rb = GetComponent<Rigidbody>();
+        speedMultiplier = 1;
     }
 
     void Update() {
@@ -19,9 +22,11 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
 
+        //Create a camera ray that points on a virtual ground plane to find the mouse cursor.
         Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 
+        //Anything related to mouse movement if a mouse pointer has been found.
         float rayLength;
         if(groundPlane.Raycast(cameraRay, out rayLength)) {
 
@@ -32,8 +37,15 @@ public class PlayerController : MonoBehaviour {
 
             Quaternion targetRotation = Quaternion.LookRotation(pointToMove);
 
-            rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, 0.1f);
-            rb.velocity = pointToMove.normalized * 50 * baseSpeed * Time.deltaTime;
+            rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, 0.1f * rotationSpeed);
+            
+            //Check if the player magnitude is at maximum speed. If not, accelerate.
+            if(rb.velocity.magnitude < maxSpeed) {
+                rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + 0.1f * speedMultiplier));
+                speedMultiplier++;
+            } else {
+                rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, maxSpeed));
+            }
 
         }
 
