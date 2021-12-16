@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float minSpeed;
+    [SerializeField] private float acceleration;
 
     private Camera cam;
     private Rigidbody rb;
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour {
 
                 //Check if the player magnitude is at maximum speed. If not, accelerate.
                 if(rb.velocity.magnitude <= maxSpeed - 0.1f) {
-                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + 0.2f * speedMultiplier));
+                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + acceleration * speedMultiplier));
                     speedMultiplier++;
                 } else {
                     rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, maxSpeed));
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour {
 
                 //Check if the player magnitude is at minimum speed. If not, brake.
                 if(rb.velocity.magnitude >= minSpeed + 0.1f) {
-                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + 0.2f * speedMultiplier));
+                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + acceleration * speedMultiplier));
                     speedMultiplier--;
                 } else {
                     rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, minSpeed));
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour {
 
                 //Check if the player is near the base speed. If not, brake.
                 if(rb.velocity.magnitude > baseSpeed + 0.1f) {
-                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + 0.2f * speedMultiplier));
+                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + acceleration * speedMultiplier));
                 } else {
                     rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed));
                 }
