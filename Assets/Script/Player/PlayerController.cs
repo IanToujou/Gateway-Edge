@@ -23,8 +23,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
+
+
         Vector3 moveInput = new Vector3(0, 0, 0);
-        Debug.Log(rb.velocity.magnitude);
 
         //Update controls
         boosting = (Input.GetAxisRaw("Vertical") >= 0.5f);
