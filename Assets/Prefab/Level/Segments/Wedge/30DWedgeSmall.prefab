@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 909528573751282808}
   m_Layer: 0
-  m_Name: "30\xB0 Straight (Small)"
+  m_Name: 30DWedgeSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

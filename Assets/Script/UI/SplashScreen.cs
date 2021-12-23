@@ -4,7 +4,6 @@ using UnityEngine.Video;
 using UnityEngine.UI;
 
 public class SplashScreen : MonoBehaviour {
-
     
     [SerializeField] private Canvas canvas;
     
@@ -15,6 +14,7 @@ public class SplashScreen : MonoBehaviour {
 
         player = gameObject.GetComponent<VideoPlayer>();
 
+        //Change the canvas alpha depending on the video start.
         if(hasStarted)
         {
             canvas.gameObject.SetActive(true);
@@ -29,6 +29,7 @@ public class SplashScreen : MonoBehaviour {
     
     void Update() {
 
+        //Start the fading animation once.
         if(!hasStarted)
         {
             if (player.time >= 5.0f)
@@ -76,7 +77,7 @@ public class SplashScreen : MonoBehaviour {
                 if (rawImage) rawImage.enabled = true;
                 player.Play();
 
-                //Delay - to make sure the Image has the correct Texture
+                //Delay, to make sure the Image has the correct Texture
                 yield return new WaitForSeconds(0.1f);
 
                 while (alpha <= fadeEndValue)

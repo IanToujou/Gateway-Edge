@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8245109275368380113}
   m_Layer: 0
-  m_Name: Curve (Small)
+  m_Name: CurveSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

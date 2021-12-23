@@ -323,7 +323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3730068241533401366}
   m_Layer: 0
-  m_Name: Start Area
+  m_Name: StartArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
