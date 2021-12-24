@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour{
     private static List<GameObject> uiList = new List<GameObject>();
     
 
-    void Start() {
+    void Awake() {
         uiList.Add(menuUI);
         uiList.Add(settingsUI);
     }
