@@ -3,16 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour {
 
-    public void PressStart() {
+    public void ButtonPressStart() {
         SceneManager.LoadScene("SceneSaveLoad");
     }
 
-    public void PressExit() {
+    public void ButtonPressExit() {
         Application.Quit();
     }
 
-    public void PressOptions() {
-        SceneManager.LoadScene("SceneOptions");
+    public void ButtonPressSettings() {
+        UIManager.SetActiveCanvas(UILayout.SETTINGS);
     }
 
 }

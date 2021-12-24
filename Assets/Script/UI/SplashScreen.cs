@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class SplashScreen : MonoBehaviour {
     
-    [SerializeField] private Canvas canvas;
-    
     private static bool hasStarted = false;
     private VideoPlayer player;
 
@@ -17,11 +15,11 @@ public class SplashScreen : MonoBehaviour {
         //Change the canvas alpha depending on the video start.
         if(hasStarted)
         {
-            canvas.gameObject.SetActive(true);
+            UIManager.DeactivateAllCanvas();
             player.targetCameraAlpha = 0f;
         } else
         {
-            canvas.gameObject.SetActive(false);
+            UIManager.DeactivateAllCanvas();
             player.targetCameraAlpha = 1.0f;
         }
 
@@ -35,7 +33,7 @@ public class SplashScreen : MonoBehaviour {
             if (player.time >= 5.0f)
             {
                 StartCoroutine(FadeVideoPlayerAlpha(player, 0, 1f));
-                canvas.gameObject.SetActive(true);
+                UIManager.SetActiveCanvas(UILayout.MENU);
                 hasStarted = true;
             }
         }
