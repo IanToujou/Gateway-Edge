@@ -1,18 +1,17 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour {
 
     public void ButtonPressStart() {
-        SceneManager.LoadScene("SceneSaveLoad");
-    }
-
-    public void ButtonPressExit() {
-        Application.Quit();
+        UIManager.SetActiveCanvas(UILayout.SAVE_LOAD);
     }
 
     public void ButtonPressSettings() {
         UIManager.SetActiveCanvas(UILayout.SETTINGS);
+    }
+
+    public void ButtonPressExit() {
+        UIManager.SetActiveCanvas(UILayout.EXIT_CONFIRMATION);
     }
 
 }
