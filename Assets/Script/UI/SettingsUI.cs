@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SettingsUI : MonoBehaviour {
 
-    void ButtonPressBack() {
+    public void ButtonPressBack() {
         UIManager.SetActiveCanvas(UILayout.MENU);
     }
 

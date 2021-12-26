@@ -33,7 +33,7 @@ public class SplashScreen : MonoBehaviour {
             if (player.time >= 5.0f)
             {
                 StartCoroutine(FadeVideoPlayerAlpha(player, 0, 1f));
-                UIManager.SetActiveCanvas(UILayout.MENU);
+                UIManager.SetActiveCanvas(UILayout.BOOT);
                 hasStarted = true;
             }
         }
