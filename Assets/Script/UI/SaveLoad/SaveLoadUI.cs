@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SaveLoadUI : MonoBehaviour {
     
     [SerializeField] private GameObject loadButton;
+    [SerializeField] private List<GameObject> saves;
 
     private int selectedSave;
     private Text loadButtonText;
@@ -19,7 +20,7 @@ public class SaveLoadUI : MonoBehaviour {
         if(selectedSave > 0) {
             loadButtonText.color = new Color(255, 255, 255, 1);
         } else {
-            loadButtonText.color = new Color(50, 50, 50, 1);
+            loadButtonText.color = new Color(255, 255, 255, 0.3f);
         }
     }
 
@@ -28,11 +29,21 @@ public class SaveLoadUI : MonoBehaviour {
     }
 
     public void ButtonPressLoad() {
-        UIManager.SetActiveCanvas(UILayout.MENU);
+        
     }
 
     public void SelectSave(int saveNumber) {
+
         selectedSave = saveNumber;
+
+        foreach(GameObject allSaves in saves) {
+            allSaves.GetComponentInChildren<Text>().color = Color.white;
+        }
+
+        GameObject currentSave = saves[saveNumber-1];
+        Text currentSaveText = currentSave.GetComponentInChildren<Text>();
+        currentSaveText.color = Color.cyan;
+        
     }
 
 }
