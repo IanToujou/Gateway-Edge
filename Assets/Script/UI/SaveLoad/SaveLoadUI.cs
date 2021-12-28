@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SaveLoadUI : MonoBehaviour {
     
@@ -29,7 +30,13 @@ public class SaveLoadUI : MonoBehaviour {
     }
 
     public void ButtonPressLoad() {
-        
+
+        if(PlayerPrefs.HasKey("Save" + selectedSave + "_Active")) {
+            SaveManager.LoadSave(selectedSave);
+        } else {
+            SceneManager.LoadScene("NewGameScene");
+        }
+
     }
 
     public void SelectSave(int saveNumber) {
