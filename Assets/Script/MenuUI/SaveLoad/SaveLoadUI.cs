@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,11 +8,13 @@ public class SaveLoadUI : MonoBehaviour {
     
     [SerializeField] private GameObject loadButton;
     [SerializeField] private List<GameObject> saves;
+    [SerializeField] private Image overlayPanel;
 
     private int selectedSave;
     private Text loadButtonText;
 
     void Awake() {
+        overlayPanel.gameObject.SetActive(false);
         selectedSave = 0;
         loadButtonText = loadButton.GetComponentInChildren<Text>();
     }
@@ -31,11 +33,8 @@ public class SaveLoadUI : MonoBehaviour {
 
     public void ButtonPressLoad() {
 
-        if(PlayerPrefs.HasKey("Save" + selectedSave + "_Active")) {
-            SaveManager.LoadSave(selectedSave);
-        } else {
-            SceneManager.LoadScene("NewGameScene");
-        }
+        overlayPanel.gameObject.SetActive(true);
+        StartCoroutine(FadeOverlay());
 
     }
 
@@ -51,6 +50,23 @@ public class SaveLoadUI : MonoBehaviour {
         Text currentSaveText = currentSave.GetComponentInChildren<Text>();
         currentSaveText.color = Color.cyan;
         
+    }
+
+    private IEnumerator FadeOverlay() {
+
+        for (float i = 0; i <= 1; i += Time.deltaTime) {
+            overlayPanel.color = new Color(0, 0, 0, i);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        if(PlayerPrefs.HasKey("Save" + selectedSave + "_Active")) {
+            SaveManager.LoadSave(selectedSave);
+        } else {
+            SceneManager.LoadScene("SceneEntry");
+        }
+
     }
 
 }
