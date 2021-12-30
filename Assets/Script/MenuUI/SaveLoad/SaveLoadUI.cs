@@ -12,19 +12,25 @@ public class SaveLoadUI : MonoBehaviour {
 
     private int selectedSave;
     private Text loadButtonText;
+    private bool loadActive;
 
     void Awake() {
+        loadActive = false;
         overlayPanel.gameObject.SetActive(false);
         selectedSave = 0;
         loadButtonText = loadButton.GetComponentInChildren<Text>();
     }
 
     void Update() {
+
         if(selectedSave > 0) {
             loadButtonText.color = new Color(255, 255, 255, 1);
+            loadActive = true;
         } else {
             loadButtonText.color = new Color(255, 255, 255, 0.3f);
+            loadActive = false;
         }
+        
     }
 
     public void ButtonPressBack() {
@@ -33,6 +39,7 @@ public class SaveLoadUI : MonoBehaviour {
 
     public void ButtonPressLoad() {
 
+        if(!loadActive) return;
         overlayPanel.gameObject.SetActive(true);
         StartCoroutine(FadeOverlay());
 
