@@ -8,6 +8,8 @@ public class EntrySystem : MonoBehaviour {
     [SerializeField] private Text dialogueText;
     [SerializeField] private Text skipText;
     [SerializeField] private GameObject backgroundPanel;
+    [SerializeField] private Image overlayPanel;
+    [SerializeField] private AudioSource audioSource;
 
     private bool playing;
     private bool skipPressOnce;
@@ -21,7 +23,7 @@ public class EntrySystem : MonoBehaviour {
 
     void Start() {
         skipText.gameObject.SetActive(false);
-
+        overlayPanel.gameObject.SetActive(false);
     }
 
     void Update() {
@@ -37,7 +39,9 @@ public class EntrySystem : MonoBehaviour {
 
                 if(Input.GetKeyDown(KeyCode.Space)) {
                     if(skipPressOnce) {
-                        Debug.Log("Skip init.");
+                        StopAllCoroutines();
+                        currentState = EntryCutscene.AWAKE;
+                        playing = false;
                     } else {
                         skipText.gameObject.SetActive(true);
                         skipPressOnce = true;
@@ -47,9 +51,7 @@ public class EntrySystem : MonoBehaviour {
             }
 
         } else if(currentState == EntryCutscene.AWAKE) {
-
-            
-
+            StartCoroutine(PlayAwakeAnimation());
         } else if(currentState == EntryCutscene.EXIT) {
             StartCoroutine(PlayExitAnimation());
         }
@@ -58,6 +60,7 @@ public class EntrySystem : MonoBehaviour {
 
     private IEnumerator PlayEntryAnimation() {
 
+        audioSource.Play();
         yield return new WaitForSeconds(3);
         monologueText.text = "...";
         yield return new WaitForSeconds(3);
@@ -114,17 +117,26 @@ public class EntrySystem : MonoBehaviour {
 
     private IEnumerator PlayAwakeAnimation() {
 
-        
-
+        overlayPanel.gameObject.SetActive(true);
+        StartCoroutine(FadeOverlay());
+        yield return new WaitForSeconds(5);
         currentState = EntryCutscene.EXIT;
-
-        yield return null;
 
     }
 
     private IEnumerator PlayExitAnimation() {
 
+        LevelManager.LoadLevel("Level_1");
         yield return null;
+
+    }
+
+    private IEnumerator FadeOverlay() {
+
+        for (float i = 0; i <= 1; i += Time.deltaTime) {
+            overlayPanel.color = new Color(255, 255, 255, i);
+            yield return null;
+        }
 
     }
 

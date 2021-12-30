@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager {
     
     //General variables
     private static Dictionary<string, LevelManager> managers = new Dictionary<string, LevelManager>();
@@ -36,6 +37,11 @@ public class LevelManager : MonoBehaviour {
 
     public void AddFragment(int amount) {
         fragments += amount;
+    }
+
+    public static void LoadLevel(string id) {
+        SceneManager.LoadScene("Scene" + id.Replace("_", ""));
+        CreateNewManager(id);
     }
 
 }
