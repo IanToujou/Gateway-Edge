@@ -60,57 +60,86 @@ public class EntrySystem : MonoBehaviour {
 
     private IEnumerator PlayEntryAnimation() {
 
+        //Pre Delay
         audioSource.Play();
         yield return new WaitForSeconds(3);
-        monologueText.text = "...";
-        yield return new WaitForSeconds(3);
-        monologueText.text = "";
-        yield return new WaitForSeconds(3);
-        monologueText.text = "Where am I?...";
-        yield return new WaitForSeconds(3);
-        monologueText.text = "";
-        yield return new WaitForSeconds(3);
-        monologueText.text = "...";
-        yield return new WaitForSeconds(3);
-        monologueText.text = "";
-        yield return new WaitForSeconds(3);
-        dialogueText.text = "Hey!...";
-        yield return new WaitForSeconds(3);
-        dialogueText.text = "";
-        yield return new WaitForSeconds(3);
-        monologueText.text = "What?...";
-        yield return new WaitForSeconds(3);
-        monologueText.text = "";
-        yield return new WaitForSeconds(3);
-        monologueText.text = "Is anybody there?...";
-        yield return new WaitForSeconds(3);
-        monologueText.text = "";
-        yield return new WaitForSeconds(3);
-        dialogueText.text = "Wake up!...";
-        yield return new WaitForSeconds(3);
-        dialogueText.text = "";
-        yield return new WaitForSeconds(2);
-        dialogueText.text = "Okay, this doesn't seem to work...";
-        yield return new WaitForSeconds(3);
-        dialogueText.text = "";
-        yield return new WaitForSeconds(1);
-        dialogueText.text = "I'm going to re-initialize your system. Please wait...";
-        yield return new WaitForSeconds(5);
-        dialogueText.text = "";
-        yield return new WaitForSeconds(3);
-        dialogueText.text = "Okay... This could hurt a little...";
-        yield return new WaitForSeconds(3);
-        dialogueText.text = "";
-        yield return new WaitForSeconds(2);
-        dialogueText.text = "I'm going to reboot you now, please don't do ANYTHING. Got it?";
-        yield return new WaitForSeconds(5);
-        dialogueText.text = "";
-        yield return new WaitForSeconds(2);
-        dialogueText.text = "Good. I hope this won't damage your kernel...";
+
+        //Text
+        ShowText(monologueText, "...", 3);
         yield return new WaitForSeconds(4);
-        dialogueText.text = "";
+
+        //Delay
+        yield return new WaitForSeconds(3);
+
+        //Text
+        ShowText(monologueText, "Where am I?...", 3);
+        yield return new WaitForSeconds(4);
+
+        //Delay
+        yield return new WaitForSeconds(3);
+
+        //Text
+        ShowText(dialogueText, "Hey!...", 3);
+        yield return new WaitForSeconds(4);
+
+        //Delay
+        yield return new WaitForSeconds(3);
+
+        //Text
+        ShowText(monologueText, "What?...", 2);
+        yield return new WaitForSeconds(3);
+
+        //Delay
+        yield return new WaitForSeconds(3);
+
+        //Text
+        ShowText(monologueText, "Is anybody there?...", 3);
+        yield return new WaitForSeconds(4);
+
+        //Delay
+        yield return new WaitForSeconds(3);
+
+        //Text
+        ShowText(dialogueText, "Wake up!...", 3);
+        yield return new WaitForSeconds(4);
+
+        //Delay
+        yield return new WaitForSeconds(2);
+
+        //Text
+        ShowText(dialogueText, "Okay, this doesn't seem to work...", 3);
+        yield return new WaitForSeconds(4);
+
+        //Delay
+        yield return new WaitForSeconds(1);
+
+        //Text
+        ShowText(dialogueText, "I'm going to re-initialize your system. Please wait...", 5);
+        yield return new WaitForSeconds(6);
+
+        //Delay
+        yield return new WaitForSeconds(3);
+
+        //Text
+        ShowText(dialogueText, "Okay... This could hurt a little...", 3);
+        yield return new WaitForSeconds(4);
+
+        //Delay
+        yield return new WaitForSeconds(2);
+
+        //Text
+        ShowText(dialogueText, "I'm going to reboot you now, please don't do ANYTHING. Got it?", 5);
+        yield return new WaitForSeconds(6);
+
+        //Delay
+        yield return new WaitForSeconds(2);
+
+        //Text
+        ShowText(dialogueText, "Good. I hope this won't damage you...", 4);
         yield return new WaitForSeconds(5);
 
+        //Post Delay
+        yield return new WaitForSeconds(5);
         currentState = EntryCutscene.AWAKE;
 
     }
@@ -137,6 +166,37 @@ public class EntrySystem : MonoBehaviour {
             overlayPanel.color = new Color(255, 255, 255, i);
             yield return null;
         }
+
+    }
+
+    private IEnumerator FadeText(Text text, bool fadeIn) {
+        
+        if(fadeIn) {
+            for (float i = 0; i <= 1; i += Time.deltaTime * 2) {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, i);
+                yield return null;
+            }
+        } else {
+            for (float i = 1; i >= 0; i -= Time.deltaTime * 2) {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, i);
+                yield return null;
+            }
+        }
+
+    }
+
+    private void ShowText(Text text, string textString, int seconds) {
+        StartCoroutine(ShowTextAnimated(text, textString, seconds));
+    }
+
+    private IEnumerator ShowTextAnimated(Text text, string textString, int seconds) {
+
+        text.text = textString;
+        StartCoroutine(FadeText(text, true));
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(seconds);
+        StartCoroutine(FadeText(text, false));
+        yield return new WaitForSeconds(0.5f);
 
     }
 
