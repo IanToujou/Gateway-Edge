@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
-
         Vector3 moveInput = new Vector3(0, 0, 0);
 
         //Update controls
