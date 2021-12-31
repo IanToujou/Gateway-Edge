@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UILayout : MonoBehaviour {
+public class MenuUILayout : MonoBehaviour {
     
     public const int BOOT = 0;
     public const int TITLE = 1;

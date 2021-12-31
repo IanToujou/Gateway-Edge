@@ -3,15 +3,15 @@ using UnityEngine;
 public class MenuUI : MonoBehaviour {
 
     public void ButtonPressStart() {
-        UIManager.SetActiveCanvas(UILayout.SAVE_LOAD);
+        MenuUIManager.SetActiveCanvas(MenuUILayout.SAVE_LOAD);
     }
 
     public void ButtonPressSettings() {
-        UIManager.SetActiveCanvas(UILayout.SETTINGS);
+        MenuUIManager.SetActiveCanvas(MenuUILayout.SETTINGS);
     }
 
     public void ButtonPressExit() {
-        UIManager.SetActiveCanvas(UILayout.EXIT_CONFIRMATION);
+        MenuUIManager.SetActiveCanvas(MenuUILayout.EXIT_CONFIRMATION);
     }
 
 }

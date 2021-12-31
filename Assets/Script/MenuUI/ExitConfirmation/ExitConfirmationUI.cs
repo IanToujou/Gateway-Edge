@@ -7,7 +7,7 @@ public class ExitConfirmationUI : MonoBehaviour {
     }
 
     public void ButtonPressNo() {
-        UIManager.SetActiveCanvas(UILayout.MENU);
+        MenuUIManager.SetActiveCanvas(MenuUILayout.MENU);
     }
 
 }

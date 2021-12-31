@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class UIManager : MonoBehaviour{
+public class MenuUIManager : MonoBehaviour{
 
     [SerializeField] private GameObject bootUI;
     [SerializeField] private GameObject titleUI;

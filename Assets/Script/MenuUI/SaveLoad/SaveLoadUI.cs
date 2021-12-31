@@ -34,7 +34,7 @@ public class SaveLoadUI : MonoBehaviour {
     }
 
     public void ButtonPressBack() {
-        UIManager.SetActiveCanvas(UILayout.MENU);
+        MenuUIManager.SetActiveCanvas(MenuUILayout.MENU);
     }
 
     public void ButtonPressLoad() {

@@ -15,11 +15,11 @@ public class SplashScreen : MonoBehaviour {
         //Change the canvas alpha depending on the video start.
         if(hasStarted)
         {
-            UIManager.DeactivateAllCanvas();
+            MenuUIManager.DeactivateAllCanvas();
             player.targetCameraAlpha = 0f;
         } else
         {
-            UIManager.DeactivateAllCanvas();
+            MenuUIManager.DeactivateAllCanvas();
             player.targetCameraAlpha = 1.0f;
         }
 
@@ -33,7 +33,7 @@ public class SplashScreen : MonoBehaviour {
             if (player.time >= 5.0f)
             {
                 StartCoroutine(FadeVideoPlayerAlpha(player, 0, 1f));
-                UIManager.SetActiveCanvas(UILayout.BOOT);
+                MenuUIManager.SetActiveCanvas(MenuUILayout.BOOT);
                 hasStarted = true;
             }
         }

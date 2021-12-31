@@ -34,7 +34,7 @@ public class SystemText : MonoBehaviour {
         yield return new WaitForSeconds(0.2f);
         text.text = "System Boot Successful";
         yield return new WaitForSeconds(1.3f);
-        UIManager.SetActiveCanvas(UILayout.TITLE);
+        MenuUIManager.SetActiveCanvas(MenuUILayout.TITLE);
     }
 
 }
