@@ -18020,7 +18020,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 022146e1738532a4bb8477b754b2daf5, type: 3}
+    m_Font: {fileID: 12800000, guid: 3cd0bc0955ca8ab48b2dad6da60dce42, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -18032,7 +18032,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: System
+  m_Text: SYSTEM
 --- !u!222 &665603096
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30628,7 +30628,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 022146e1738532a4bb8477b754b2daf5, type: 3}
+    m_Font: {fileID: 12800000, guid: 24c760218e838e9449845776982c0e2a, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -30640,7 +30640,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: amogus
+  m_Text: Du kek alter
 --- !u!222 &1473445169
 CanvasRenderer:
   m_ObjectHideFlags: 0
