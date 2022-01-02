@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class DialoguePanel : MonoBehaviour {
     [SerializeField] private Text contentText;
 
     private bool nextKeyPress;
+    private bool playing;
 
     void Awake() {
         nextKeyPress = false;
@@ -18,9 +20,24 @@ public class DialoguePanel : MonoBehaviour {
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            nextKeyPress = true;
+
+        if(currentDialogue != 0) {
+
+            if(Input.GetKeyDown(KeyCode.Space)) {
+                nextKeyPress = true;
+            }
+
+            if(!playing) {
+                playing = true;
+                PlayDialogue(currentDialogue);
+            }
+
         }
+        
+    }
+
+    public static void SetActiveDialogue(int dialogueId) {
+        currentDialogue = dialogueId;
     }
 
     public void SetPersonText(string content) {
@@ -64,6 +81,39 @@ public class DialoguePanel : MonoBehaviour {
         nextKeyPress = false;
         StartCoroutine(FadeText(text, false));
         yield return new WaitForSeconds(0.5f);
+
+    }
+
+    private IEnumerator PlayDialogue(int dialogueId) {
+
+        if(dialogueId == -1) {
+
+            List<string> textList = new List<string>();
+            textList.Add("You need to go straight kek lol rofl lmao");
+            textList.Add("Lol just go idiot");
+
+            foreach(string currentText in textList) {
+
+                ShowText(contentText, currentText);
+
+                yield return new WaitForSeconds(0.5f);
+
+                while(!nextKeyPress) {
+                    yield return null;
+                }
+
+                yield return new WaitForSeconds(0.5f);
+
+            }
+
+        } else if(dialogueId == -2) {
+
+
+
+        }
+
+        currentDialogue = 0;
+        playing = false;
 
     }
 

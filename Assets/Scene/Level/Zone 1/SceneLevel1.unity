@@ -27554,7 +27554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 485da6c5f413fa94093129ce447f6e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 0}
+  dialoguePanel: {fileID: 137734613}
 --- !u!43 &1190844231
 Mesh:
   m_ObjectHideFlags: 0
@@ -30596,7 +30596,7 @@ GameObject:
   - component: {fileID: 1473445169}
   - component: {fileID: 1473445168}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ContentText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40567,7 +40567,7 @@ GameObject:
   - component: {fileID: 1834969223}
   - component: {fileID: 1834969225}
   m_Layer: 5
-  m_Name: TextBox
+  m_Name: DialoguePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40644,8 +40644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a2fb0c02069fd45b5321057963bb50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: {fileID: 0}
-  speakerText: {fileID: 0}
+  personText: {fileID: 665603095}
+  contentText: {fileID: 1473445168}
 --- !u!43 &1837111076
 Mesh:
   m_ObjectHideFlags: 0

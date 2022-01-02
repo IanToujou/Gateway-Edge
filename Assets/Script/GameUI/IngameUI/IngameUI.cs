@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class IngameUI : MonoBehaviour {
     
@@ -9,6 +6,10 @@ public class IngameUI : MonoBehaviour {
 
     void Awake() {
         dialoguePanel.SetActive(false);
+    }
+
+    void Start() {
+        DialoguePanel.SetActiveDialogue(-1);
     }
 
 }
