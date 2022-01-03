@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialoguePanel : MonoBehaviour {
+public class DialogueManager : MonoBehaviour {
     
-    private static int currentDialogue;
-
+    [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private Text personText;
     [SerializeField] private Text contentText;
 
     private bool nextKeyPress;
     private bool playing;
+    private int currentDialogue;
 
     void Awake() {
+        dialoguePanel.SetActive(false);
         nextKeyPress = false;
+        playing = false;
         personText.text = "";
         contentText.text = "";
     }
@@ -23,20 +25,25 @@ public class DialoguePanel : MonoBehaviour {
 
         if(currentDialogue != 0) {
 
+            dialoguePanel.SetActive(true);
+            Debug.Log(currentDialogue);
+
             if(Input.GetKeyDown(KeyCode.Space)) {
                 nextKeyPress = true;
             }
 
             if(!playing) {
                 playing = true;
-                PlayDialogue(currentDialogue);
+                StartCoroutine(PlayDialogue(currentDialogue));
             }
 
+        } else {
+            dialoguePanel.SetActive(false);
         }
         
     }
 
-    public static void SetActiveDialogue(int dialogueId) {
+    public void SetActiveDialogue(int dialogueId) {
         currentDialogue = dialogueId;
     }
 
@@ -74,7 +81,7 @@ public class DialoguePanel : MonoBehaviour {
         StartCoroutine(FadeText(text, true));
         yield return new WaitForSeconds(0.5f);
         
-        while(nextKeyPress) {
+        while(!nextKeyPress) {
             yield return null;
         }
 
@@ -85,8 +92,10 @@ public class DialoguePanel : MonoBehaviour {
     }
 
     private IEnumerator PlayDialogue(int dialogueId) {
+        
+        Debug.Log("Playing dialogue");
 
-        if(dialogueId == -1) {
+        if(dialogueId == 10) {
 
             List<string> textList = new List<string>();
             textList.Add("You need to go straight kek lol rofl lmao");

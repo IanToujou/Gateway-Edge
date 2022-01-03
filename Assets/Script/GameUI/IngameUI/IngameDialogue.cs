@@ -1,4 +1,4 @@
-public class NewBehaviourScript {
+public class IngameDialogue {
     
     //Zone start and ends
     public const int LEVEL_1_START = 10;

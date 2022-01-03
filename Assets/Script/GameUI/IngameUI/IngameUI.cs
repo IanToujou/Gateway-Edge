@@ -3,13 +3,10 @@ using UnityEngine;
 public class IngameUI : MonoBehaviour {
     
     [SerializeField] private GameObject dialoguePanel;
-
-    void Awake() {
-        dialoguePanel.SetActive(false);
-    }
+    [SerializeField] private DialogueManager dialogueManager;
 
     void Start() {
-        DialoguePanel.SetActiveDialogue(-1);
+        dialogueManager.SetActiveDialogue(IngameDialogue.LEVEL_1_START);
     }
 
 }
