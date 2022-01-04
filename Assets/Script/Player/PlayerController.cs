@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour {
     
     [SerializeField] private float baseSpeed;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private float boostRotationSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float minSpeed;
     [SerializeField] private float acceleration;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour {
     private float speedMultiplier;
     private bool boosting;
     private bool braking;
+    private float currentRotationSpeed;
 
     void Start() {
         cam = FindObjectOfType<Camera>();
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour {
         speedMultiplier = 1;
         boosting = false;
         braking = false;
+        currentRotationSpeed = rotationSpeed;
     }
 
     void Update() {
@@ -47,10 +50,12 @@ public class PlayerController : MonoBehaviour {
             Vector3 pointToMove = Vector3.RotateTowards(rb.rotation.eulerAngles, pointToLook - transform.position, Mathf.PI / 2, 0.5f);
             Quaternion targetRotation = Quaternion.LookRotation(pointToMove);
 
-            rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, 0.1f * rotationSpeed);
+            rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, 0.1f * currentRotationSpeed);
 
             //Check for any controls
             if(boosting && !braking) {
+
+                currentRotationSpeed = boostRotationSpeed;
 
                 //Check if the player magnitude is at maximum speed. If not, accelerate.
                 if(rb.velocity.magnitude <= maxSpeed - 0.1f) {
@@ -61,7 +66,10 @@ public class PlayerController : MonoBehaviour {
                 }
 
             } else if(braking && !boosting) {
+                
+                currentRotationSpeed = rotationSpeed;
 
+                //Brake
                 //Check if the player magnitude is at minimum speed. If not, brake.
                 if(rb.velocity.magnitude >= minSpeed + 0.1f) {
                     rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + acceleration * speedMultiplier));
@@ -72,6 +80,8 @@ public class PlayerController : MonoBehaviour {
 
             } else {
                 
+                currentRotationSpeed = rotationSpeed;
+
                 //Turn back to base speed.
                 if(speedMultiplier > 1) {
                     speedMultiplier--;

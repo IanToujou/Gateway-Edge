@@ -85,24 +85,25 @@ public class DialogueManager : MonoBehaviour {
             yield return null;
         }
 
-        nextKeyPress = false;
         StartCoroutine(FadeText(text, false));
         yield return new WaitForSeconds(0.5f);
 
     }
 
     private IEnumerator PlayDialogue(int dialogueId) {
-        
-        Debug.Log("Playing dialogue");
 
         if(dialogueId == 10) {
 
             List<string> textList = new List<string>();
-            textList.Add("You need to go straight kek lol rofl lmao");
-            textList.Add("Lol just go idiot");
+            textList.Add("1");
+            textList.Add("2");
+            textList.Add("3");
+            textList.Add("4");
+            textList.Add("5");
+            textList.Add("6");
 
             foreach(string currentText in textList) {
-
+                
                 ShowText(contentText, currentText);
 
                 yield return new WaitForSeconds(0.5f);
@@ -111,6 +112,9 @@ public class DialogueManager : MonoBehaviour {
                     yield return null;
                 }
 
+                Debug.Log("Key pressed");
+
+                nextKeyPress = false;
                 yield return new WaitForSeconds(0.5f);
 
             }
@@ -124,6 +128,10 @@ public class DialogueManager : MonoBehaviour {
         currentDialogue = 0;
         playing = false;
 
+    }
+
+    public bool IsDialogueActive() {
+        return playing;
     }
 
 }
