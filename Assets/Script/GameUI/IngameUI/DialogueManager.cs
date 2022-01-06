@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour {
     
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private Text personText;
     [SerializeField] private Text contentText;
@@ -25,8 +26,8 @@ public class DialogueManager : MonoBehaviour {
 
         if(currentDialogue != 0) {
 
+            playerController.SetFreezed(true);
             dialoguePanel.SetActive(true);
-            Debug.Log(currentDialogue);
 
             if(Input.GetKeyDown(KeyCode.Space)) {
                 nextKeyPress = true;
@@ -38,6 +39,7 @@ public class DialogueManager : MonoBehaviour {
             }
 
         } else {
+            playerController.SetFreezed(false);
             dialoguePanel.SetActive(false);
         }
         
@@ -111,8 +113,6 @@ public class DialogueManager : MonoBehaviour {
                 while(!nextKeyPress) {
                     yield return null;
                 }
-
-                Debug.Log("Key pressed");
 
                 nextKeyPress = false;
                 yield return new WaitForSeconds(0.5f);

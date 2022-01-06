@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float maxSpeed;
     [SerializeField] private float minSpeed;
     [SerializeField] private float acceleration;
+    [SerializeField] private GameObject trail;
 
     private Camera cam;
     private Rigidbody rb;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     private bool boosting;
     private bool braking;
     private float currentRotationSpeed;
+    private bool freezed;
 
     void Start() {
         cam = FindObjectOfType<Camera>();
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour {
         boosting = false;
         braking = false;
         currentRotationSpeed = rotationSpeed;
+        freezed = false;
     }
 
     void Update() {
@@ -36,6 +39,14 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
+
+        if(freezed) {
+            trail.SetActive(false);
+            rb.velocity = Vector3.zero;
+            return;
+        } else {
+            trail.SetActive(true);
+        }
 
         //Create a camera ray that points on a virtual ground plane to find the mouse cursor.
         Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
@@ -100,6 +111,14 @@ public class PlayerController : MonoBehaviour {
 
         }
 
+    }
+
+    public void SetFreezed(bool freezed) {
+        this.freezed = freezed;
+    }
+
+    public bool IsFreezed() {
+        return freezed;
     }
 
 }

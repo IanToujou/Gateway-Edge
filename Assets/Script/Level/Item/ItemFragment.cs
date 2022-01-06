@@ -12,8 +12,9 @@ public class ItemFragment : MonoBehaviour {
         transform.RotateAround(transform.position, Vector3.up, 150 * Time.deltaTime);
     }
 
-    void OnTriggerEnter(Collider target) {
-        if(target.tag == "Player") {
+    void OnTriggerEnter(Collider collider) {
+        if(collider.CompareTag("Player")) {
+            Debug.Log("Penis");
             manager.AddFragment(1);
             Destroy(gameObject);
         }
