@@ -1,38 +1,32 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager {
+public class LevelManager : MonoBehaviour {
     
-    //General variables
-    private static Dictionary<string, LevelManager> managers = new Dictionary<string, LevelManager>();
+    [SerializeField] private string levelId;
 
-    private string levelId;
+    //General variables
+    private static LevelManager instance;
 
     //Level stats
     private int fragments;
 
-    public LevelManager(string levelId) {
-        this.levelId = levelId;
-        managers.Add(levelId, this);
+    //Interactive elements
+    private bool teleporterActive;
+
+    void Awake() {
+        instance = this;
+        fragments = 0;
+        teleporterActive = true;
     }
 
-    public static void CreateNewManager(string id) {
-        if(!managers.ContainsKey(id)) {
-            LevelManager manager = new LevelManager(id);
-        } else {
-            Debug.LogWarning("There is already a manager active with the id " + id + ".");
-        }
+    public void Destroy() {
+        instance = null;
     }
 
-    public static LevelManager GetManager(string id) {
-        
-        if(managers.ContainsKey(id)) {
-            return managers[id];
-        } else {
-            return new LevelManager(id);
-        }
-
+    public static LevelManager GetCurrentManager() {
+        return instance;
     }
 
     public void AddFragment(int amount) {
@@ -41,7 +35,20 @@ public class LevelManager {
 
     public static void LoadLevel(string id) {
         SceneManager.LoadScene("Scene" + id.Replace("_", ""));
-        CreateNewManager(id);
+    }
+
+    public void ActivateTeleporter() {
+        StartCoroutine(DelayTeleporterActivation());
+    }
+
+    public IEnumerator DelayTeleporterActivation() {
+        teleporterActive = false;
+        yield return new WaitForSeconds(1.5f);
+        teleporterActive = true;
+    }
+
+    public bool IsTeleporterActive() {
+        return teleporterActive;
     }
 
 }

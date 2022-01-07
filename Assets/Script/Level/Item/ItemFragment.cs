@@ -5,7 +5,7 @@ public class ItemFragment : MonoBehaviour {
     private LevelManager manager;
 
     void Awake() {
-        manager = LevelManager.GetManager("Zone1_Level1");
+        manager = LevelManager.GetCurrentManager();
     }
 
     void FixedUpdate() {
@@ -14,7 +14,6 @@ public class ItemFragment : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider) {
         if(collider.CompareTag("Player")) {
-            Debug.Log("Penis");
             manager.AddFragment(1);
             Destroy(gameObject);
         }

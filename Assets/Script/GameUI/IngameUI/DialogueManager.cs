@@ -97,12 +97,13 @@ public class DialogueManager : MonoBehaviour {
         if(dialogueId == 10) {
 
             List<string> textList = new List<string>();
-            textList.Add("1");
-            textList.Add("2");
-            textList.Add("3");
-            textList.Add("4");
-            textList.Add("5");
-            textList.Add("6");
+            textList.Add("Hey! Are you awake?");
+            textList.Add("Hmm you do seem to be awake.");
+            textList.Add("You may ask yourself who I am, right? Just kidding, you are not capable of having thoughts or a voice like I do.");
+            textList.Add("I am the system. I am the host of this world. You are one of my many workers.");
+            textList.Add("You need to complete tasks for this system. If you fail... I'll need to take administrative actions and eliminate you.");
+            textList.Add("Your task here is to deliver a packet to the physical destination address 0x00034B8, got it?");
+            textList.Add("Just follow the path and deliver it under the time limit.");
 
             foreach(string currentText in textList) {
                 
