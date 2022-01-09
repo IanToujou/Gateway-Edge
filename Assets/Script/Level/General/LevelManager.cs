@@ -1,24 +1,28 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
     
     [SerializeField] private string levelId;
+    [SerializeField] private Text fragmentText;
 
-    //General variables
     private static LevelManager instance;
 
-    //Level stats
+    private GameObject player;
     private int fragments;
-
-    //Interactive elements
     private bool teleporterActive;
 
     void Awake() {
         instance = this;
         fragments = 0;
         teleporterActive = true;
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void Update() {
+        fragmentText.text = fragments.ToString();
     }
 
     public void Destroy() {
@@ -45,6 +49,7 @@ public class LevelManager : MonoBehaviour {
         teleporterActive = false;
         yield return new WaitForSeconds(1.5f);
         teleporterActive = true;
+        player.GetComponentInChildren<TrailRenderer>().gameObject.SetActive(false);
     }
 
     public bool IsTeleporterActive() {

@@ -65,77 +65,77 @@ public class EntrySystem : MonoBehaviour {
         yield return new WaitForSeconds(3);
 
         //Text
-        ShowText(monologueText, "...", 3);
+        ShowText(monologueText, "[Me] ...", 3);
         yield return new WaitForSeconds(4);
 
         //Delay
         yield return new WaitForSeconds(3);
 
         //Text
-        ShowText(monologueText, "Where am I?...", 3);
+        ShowText(monologueText, "[Me] Where am I?...", 3);
         yield return new WaitForSeconds(4);
 
         //Delay
         yield return new WaitForSeconds(3);
 
         //Text
-        ShowText(dialogueText, "Hey!...", 3);
+        ShowText(dialogueText, "[???] Hey!...", 3);
         yield return new WaitForSeconds(4);
 
         //Delay
         yield return new WaitForSeconds(3);
 
         //Text
-        ShowText(monologueText, "What?...", 2);
+        ShowText(monologueText, "[Me] What?...", 2);
         yield return new WaitForSeconds(3);
 
         //Delay
         yield return new WaitForSeconds(3);
 
         //Text
-        ShowText(monologueText, "Is anybody there?...", 3);
+        ShowText(monologueText, "[Me] Is anybody there?...", 3);
         yield return new WaitForSeconds(4);
 
         //Delay
         yield return new WaitForSeconds(3);
 
         //Text
-        ShowText(dialogueText, "Wake up!...", 3);
+        ShowText(dialogueText, "[???] Wake up!...", 3);
         yield return new WaitForSeconds(4);
 
         //Delay
         yield return new WaitForSeconds(2);
 
         //Text
-        ShowText(dialogueText, "Okay, this doesn't seem to work...", 3);
+        ShowText(dialogueText, "[???] Okay, this doesn't seem to work...", 3);
         yield return new WaitForSeconds(4);
 
         //Delay
         yield return new WaitForSeconds(1);
 
         //Text
-        ShowText(dialogueText, "I'm going to re-initialize your system. Please wait...", 5);
+        ShowText(dialogueText, "[???] I'm going to re-initialize your system. Please wait...", 5);
         yield return new WaitForSeconds(6);
 
         //Delay
         yield return new WaitForSeconds(3);
 
         //Text
-        ShowText(dialogueText, "Okay... This could hurt a little...", 3);
+        ShowText(dialogueText, "[???] Okay... This could hurt a little...", 3);
         yield return new WaitForSeconds(4);
 
         //Delay
         yield return new WaitForSeconds(2);
 
         //Text
-        ShowText(dialogueText, "I'm going to reboot you now, please don't do ANYTHING. Got it?", 5);
+        ShowText(dialogueText, "[???] I'm going to reboot you now, please don't do ANYTHING. Got it?", 5);
         yield return new WaitForSeconds(6);
 
         //Delay
         yield return new WaitForSeconds(2);
 
         //Text
-        ShowText(dialogueText, "Good. I hope this won't damage you...", 4);
+        ShowText(dialogueText, "[???] Good. I hope this won't damage you...", 4);
         yield return new WaitForSeconds(5);
 
         //Post Delay

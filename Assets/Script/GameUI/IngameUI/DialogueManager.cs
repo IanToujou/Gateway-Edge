@@ -49,10 +49,12 @@ public class DialogueManager : MonoBehaviour {
         currentDialogue = dialogueId;
     }
 
+    //Sets the person text, not animated.
     public void SetPersonText(string content) {
-        ShowText(personText, content);
+        personText.text = content;
     }
 
+    //Sets the content text, animated.
     public void SetContentText(string content) {
         ShowText(contentText, content);
     }
@@ -81,22 +83,24 @@ public class DialogueManager : MonoBehaviour {
 
         text.text = textString;
         StartCoroutine(FadeText(text, true));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         
         while(!nextKeyPress) {
             yield return null;
         }
 
         StartCoroutine(FadeText(text, false));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
 
     }
 
     private IEnumerator PlayDialogue(int dialogueId) {
 
-        if(dialogueId == 10) {
+        List<string> textList = new List<string>();
+        SetPersonText("System");
 
-            List<string> textList = new List<string>();
+        if(dialogueId == 10) {
+            
             textList.Add("Hey! Are you awake?");
             textList.Add("Hmm you do seem to be awake.");
             textList.Add("You may ask yourself who I am, right? Just kidding, you are not capable of having thoughts or a voice like I do.");
@@ -105,24 +109,23 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("Your task here is to deliver a packet to the physical destination address 0x00034B8, got it?");
             textList.Add("Just follow the path and deliver it under the time limit.");
 
-            foreach(string currentText in textList) {
-                
-                ShowText(contentText, currentText);
+        } else if(dialogueId == -2) {
 
-                yield return new WaitForSeconds(0.5f);
+
+
+        }
+
+        foreach(string currentText in textList) {
+
+                SetContentText(currentText);
+                yield return new WaitForSeconds(0.25f);
 
                 while(!nextKeyPress) {
                     yield return null;
                 }
 
                 nextKeyPress = false;
-                yield return new WaitForSeconds(0.5f);
-
-            }
-
-        } else if(dialogueId == -2) {
-
-
+                yield return new WaitForSeconds(0.25f);
 
         }
 

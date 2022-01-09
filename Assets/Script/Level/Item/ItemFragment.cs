@@ -4,7 +4,7 @@ public class ItemFragment : MonoBehaviour {
 
     private LevelManager manager;
 
-    void Awake() {
+    void Start() {
         manager = LevelManager.GetCurrentManager();
     }
 

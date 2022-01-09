@@ -658,6 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f913be5b7c23343a3b889fc63cc719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destinationTeleporter: {fileID: 0}
 --- !u!65 &-1604212214797536623
 BoxCollider:
   m_ObjectHideFlags: 0
