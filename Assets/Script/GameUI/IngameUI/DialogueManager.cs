@@ -109,9 +109,18 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("Your task here is to deliver a packet to the physical destination address 0x00034B8, got it?");
             textList.Add("Just follow the path and deliver it under the time limit.");
 
+        } else if(dialogueId == -1) {
+
+            textList.Add("Wait a moment... Do you see that curve in front of you?");
+            textList.Add("Try to gain angular momentum by moving your mouse cursor on the screen.");
+            textList.Add("You should be able to make this curve without any problems.");
+
         } else if(dialogueId == -2) {
 
-
+            textList.Add("That was... a fail. But that was not your fault.");
+            textList.Add("I need to update your angular movement because it is not up-to-date.");
+            textList.Add("Hang in there...");
+            textList.Add("And, done! You are free to go and try again.");
 
         }
 

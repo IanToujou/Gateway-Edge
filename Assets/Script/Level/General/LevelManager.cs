@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour {
     
     [SerializeField] private string levelId;
     [SerializeField] private Text fragmentText;
+    [SerializeField] private DialogueManager dialogueManager;
 
     private static LevelManager instance;
 
@@ -54,6 +55,14 @@ public class LevelManager : MonoBehaviour {
 
     public bool IsTeleporterActive() {
         return teleporterActive;
+    }
+
+    public DialogueManager GetDialogueManager() {
+        return dialogueManager;
+    }
+
+    public void SetDialogueManager(DialogueManager dialogueManager) {
+        this.dialogueManager = dialogueManager;
     }
 
 }
