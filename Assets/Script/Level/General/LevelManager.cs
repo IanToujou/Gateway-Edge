@@ -50,7 +50,6 @@ public class LevelManager : MonoBehaviour {
         teleporterActive = false;
         yield return new WaitForSeconds(1.5f);
         teleporterActive = true;
-        player.GetComponentInChildren<TrailRenderer>().gameObject.SetActive(false);
     }
 
     public bool IsTeleporterActive() {
@@ -63,6 +62,14 @@ public class LevelManager : MonoBehaviour {
 
     public void SetDialogueManager(DialogueManager dialogueManager) {
         this.dialogueManager = dialogueManager;
+    }
+
+    public GameObject GetPlayer() {
+        return player;
+    }
+
+    public void SetPlayer(GameObject player) {
+        this.player = player;
     }
 
 }

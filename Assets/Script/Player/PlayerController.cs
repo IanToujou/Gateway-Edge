@@ -18,6 +18,12 @@ public class PlayerController : MonoBehaviour {
     private float currentRotationSpeed;
     private bool freezed;
 
+    //Disable controls in the tutorial
+    private bool allowRotation = true;
+    private bool allowBrake = true;
+    private bool allowBoost = true;
+    private bool failRotation = false;
+
     void Start() {
         cam = FindObjectOfType<Camera>();
         rb = GetComponent<Rigidbody>();
@@ -26,6 +32,10 @@ public class PlayerController : MonoBehaviour {
         braking = false;
         currentRotationSpeed = rotationSpeed;
         freezed = false;
+        allowRotation = true;
+        allowBrake = true;
+        allowBoost = true;
+        failRotation = false;
     }
 
     void Update() {
@@ -33,8 +43,8 @@ public class PlayerController : MonoBehaviour {
         Vector3 moveInput = new Vector3(0, 0, 0);
 
         //Update controls
-        boosting = (Input.GetAxisRaw("Vertical") >= 0.5f);
-        braking = (Input.GetAxisRaw("Vertical") <= -0.5f);
+        if(allowBoost) boosting = (Input.GetAxisRaw("Vertical") >= 0.5f);
+        if(allowBrake) braking = (Input.GetAxisRaw("Vertical") <= -0.5f);
 
     }
 
@@ -56,12 +66,14 @@ public class PlayerController : MonoBehaviour {
         float rayLength;
         if(groundPlane.Raycast(cameraRay, out rayLength)) {
 
-            Vector3 rayPoint = cameraRay.GetPoint(rayLength);
-            Vector3 pointToLook = new Vector3(rayPoint.x, transform.position.y, rayPoint.z);
-            Vector3 pointToMove = Vector3.RotateTowards(rb.rotation.eulerAngles, pointToLook - transform.position, Mathf.PI / 2, 0.5f);
-            Quaternion targetRotation = Quaternion.LookRotation(pointToMove);
-
-            rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, 0.1f * currentRotationSpeed);
+            if(allowRotation) {
+                if(failRotation) currentRotationSpeed /= 10;
+                Vector3 rayPoint = cameraRay.GetPoint(rayLength);
+                Vector3 pointToLook = new Vector3(rayPoint.x, transform.position.y, rayPoint.z);
+                Vector3 pointToMove = Vector3.RotateTowards(rb.rotation.eulerAngles, pointToLook - transform.position, Mathf.PI / 2, 0.5f);
+                Quaternion targetRotation = Quaternion.LookRotation(pointToMove);
+                rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, 0.1f * currentRotationSpeed);
+            }
 
             //Check for any controls
             if(boosting && !braking) {
@@ -119,6 +131,38 @@ public class PlayerController : MonoBehaviour {
 
     public bool IsFreezed() {
         return freezed;
+    }
+
+    public void SetAllowRotation(bool allowRotation) {
+        this.allowRotation = allowRotation;
+    }
+
+    public bool IsAllowRotation() {
+        return allowRotation;
+    }
+
+    public void SetAllowBrake(bool allowBrake) {
+        this.allowBrake = allowBrake;
+    }
+
+    public bool IsAllowBrake() {
+        return allowBrake;
+    }
+
+    public void SetAllowBoost(bool allowBoost) {
+        this.allowBoost = allowBoost;
+    }
+
+    public bool IsAllowBoost() {
+        return allowBoost;
+    }
+
+    public void SetFailRotation(bool failRotation) {
+        this.failRotation = failRotation;
+    }
+
+    public bool IsFailRotation() {
+        return failRotation;
     }
 
 }

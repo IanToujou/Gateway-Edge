@@ -9,8 +9,9 @@ public class IngameDialogue {
     public const int TUTORIAL_CURVE = -2;
     public const int TUTORIAL_FRAGMENT = -3;
     public const int TUTORIAL_HARD_CURVE = -4;
-    public const int TUTORIAL_SPLIT = -5;
-    public const int TUTORIAL_PROTOCOL = -6;
-    public const int TUTORIAL_END = -7;
+    public const int TUTORIAL_BOOST_BRAKE = -5;
+    public const int TUTORIAL_SPLIT = -6;
+    public const int TUTORIAL_PROTOCOL = -7;
+    public const int TUTORIAL_END = -8;
 
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class TeleporterPad : MonoBehaviour {
@@ -15,6 +14,7 @@ public class TeleporterPad : MonoBehaviour {
     void OnTriggerEnter(Collider collider) {
         if(collider.CompareTag("Player")) {
             if(levelManager.IsTeleporterActive()) {
+                player.GetComponentInChildren<TrailRenderer>().Clear();
                 player.transform.position = destinationTeleporter.transform.position;
                 levelManager.ActivateTeleporter();
             }
