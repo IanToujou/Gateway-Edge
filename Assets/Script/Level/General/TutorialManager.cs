@@ -22,30 +22,25 @@ public class TutorialManager : MonoBehaviour {
             playerController.SetAllowBrake(false);
             playerController.SetAllowBoost(false);
             playerController.SetFailRotation(true);
-            zones[0].SetActive(true);
-            zones[1].SetActive(false);
+            SetActiveZone(0);
         } else if(state == 1) {
             playerController.SetAllowRotation(true);
             playerController.SetAllowBrake(false);
             playerController.SetAllowBoost(false);
             playerController.SetFailRotation(true);
-            zones[0].SetActive(false);
-            zones[1].SetActive(true);
+            SetActiveZone(1);
         } else if(state == 2) {
             playerController.SetAllowRotation(true);
             playerController.SetAllowBrake(false);
             playerController.SetAllowBoost(false);
             playerController.SetFailRotation(false);
-            zones[0].SetActive(false);
-            zones[1].SetActive(false);
+            SetActiveZone(2);
         } else if(state == 3) {
             playerController.SetAllowRotation(true);
             playerController.SetAllowBrake(true);
             playerController.SetAllowBoost(true);
             playerController.SetFailRotation(false);
-            zones[0].SetActive(false);
-            zones[1].SetActive(false);
-            zones[2].SetActive(false);
+            SetActiveZone(3);
         }
 
     }
@@ -57,6 +52,22 @@ public class TutorialManager : MonoBehaviour {
 
     public int GetState() {
         return state;
+    }
+
+    public void SetActiveZone(int zoneNumber) {
+        for(int i = 0; i < zones.Count; i++) {
+            if(i != zoneNumber) {
+                zones[i].SetActive(false);
+            } else {
+                zones[i].SetActive(true);
+            }
+        }
+    }
+
+    public void DeactiveAllZones() {
+        foreach(GameObject all in zones) {
+            all.SetActive(false);
+        }
     }
 
 }

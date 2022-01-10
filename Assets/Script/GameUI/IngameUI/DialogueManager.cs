@@ -122,6 +122,10 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("Hang in there...");
             textList.Add("And, done! You are free to go and try again.");
 
+        } else if(dialogueId == -3) {
+
+            textList.Add("Your mom");
+
         }
 
         foreach(string currentText in textList) {

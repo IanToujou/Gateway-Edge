@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2107677240441004039}
   m_Layer: 0
   m_Name: Arch
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6208,7 +6208,7 @@ GameObject:
   - component: {fileID: 2107677241219780718}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6521,7 +6521,7 @@ GameObject:
   - component: {fileID: 2107677241429167852}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6834,7 +6834,7 @@ GameObject:
   - component: {fileID: 2107677241605080972}
   m_Layer: 0
   m_Name: Arch
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

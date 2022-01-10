@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float maxSpeed;
     [SerializeField] private float minSpeed;
     [SerializeField] private float acceleration;
+    [SerializeField] private float deathSpeed;
     [SerializeField] private GameObject trail;
 
     private Camera cam;
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour {
     private bool braking;
     private float currentRotationSpeed;
     private bool freezed;
+    private Vector3 startPosition;
+    private bool teleportInsteadDeath;
 
     //Disable controls in the tutorial
     private bool allowRotation = true;
@@ -32,10 +35,12 @@ public class PlayerController : MonoBehaviour {
         braking = false;
         currentRotationSpeed = rotationSpeed;
         freezed = false;
+        startPosition = gameObject.transform.position;
         allowRotation = true;
         allowBrake = true;
         allowBoost = true;
         failRotation = false;
+        teleportInsteadDeath = false;
     }
 
     void Update() {
@@ -123,6 +128,25 @@ public class PlayerController : MonoBehaviour {
 
         }
 
+    }
+
+    void OnCollisionEnter(Collision collision) {
+
+        //Check for death
+        if(collision.gameObject.CompareTag("Wall")) {
+            if(rb.velocity.magnitude >= deathSpeed) {
+                Die();
+            }
+        }
+
+    }
+
+    void Die() {
+
+        if(teleportInsteadDeath) {
+            gameObject.transform.position = startPosition;
+        } 
+        
     }
 
     public void SetFreezed(bool freezed) {

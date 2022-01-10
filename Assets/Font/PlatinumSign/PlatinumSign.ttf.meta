@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b23ac3d847884e649b12aac04cb4f508
+guid: 275af7b4fcc108f4f8b982e81ac2a89e
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Nasalization
+  - Platinum Sign
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
