@@ -43443,6 +43443,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DecorationSquare1
       objectReference: {fileID: 0}
+    - target: {fileID: 3189029965903985281, guid: 156843e7f6ab54640b83f4b446ad5b74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 156843e7f6ab54640b83f4b446ad5b74, type: 3}
 --- !u!4 &965016411 stripped
@@ -44950,6 +44954,10 @@ PrefabInstance:
     - target: {fileID: 3189029965903985281, guid: 156843e7f6ab54640b83f4b446ad5b74, type: 3}
       propertyPath: m_Name
       value: DecorationSquare1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189029965903985281, guid: 156843e7f6ab54640b83f4b446ad5b74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 156843e7f6ab54640b83f4b446ad5b74, type: 3}
@@ -69096,6 +69104,10 @@ PrefabInstance:
     - target: {fileID: 3189029965903985281, guid: 156843e7f6ab54640b83f4b446ad5b74, type: 3}
       propertyPath: m_Name
       value: DecorationSquare1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189029965903985281, guid: 156843e7f6ab54640b83f4b446ad5b74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 156843e7f6ab54640b83f4b446ad5b74, type: 3}
