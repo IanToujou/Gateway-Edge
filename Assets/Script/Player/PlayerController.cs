@@ -145,7 +145,9 @@ public class PlayerController : MonoBehaviour {
 
         if(teleportInsteadDeath) {
             gameObject.transform.position = startPosition;
-        } 
+        } else {
+            Debug.Log("Death.");
+        }
         
     }
 
@@ -187,6 +189,14 @@ public class PlayerController : MonoBehaviour {
 
     public bool IsFailRotation() {
         return failRotation;
+    }
+
+    public bool IsTeleportInsteadDeath() {
+        return teleportInsteadDeath;
+    }
+
+    public void SetTeleportInsteadDeath(bool teleportInsteadDeath) {
+        this.teleportInsteadDeath = teleportInsteadDeath;
     }
 
 }

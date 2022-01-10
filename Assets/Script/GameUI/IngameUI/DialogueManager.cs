@@ -105,7 +105,7 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("Hmm you do seem to be awake.");
             textList.Add("You may ask yourself who I am, right? Just kidding, you are not capable of having thoughts or a voice like I do.");
             textList.Add("I am the system. I am the host of this world. You are one of my many workers.");
-            textList.Add("You need to complete tasks for this system. If you fail... I'll need to take administrative actions and eliminate you.");
+            textList.Add("You need to complete tasks for this system. If you fail... I will need to take administrative actions and eliminate you.");
             textList.Add("Your task here is to deliver a packet to the physical destination address 0x00034B8, got it?");
             textList.Add("Just follow the path and deliver it under the time limit.");
 
@@ -124,7 +124,36 @@ public class DialogueManager : MonoBehaviour {
 
         } else if(dialogueId == -3) {
 
-            textList.Add("Your mom");
+            textList.Add("Do you see these green little fragments down there?");
+            textList.Add("You can collect them to buy some stuff, just to satisfy your needs.");
+            textList.Add("Do not question where they come from.");
+
+        } else if(dialogueId == -4) {
+
+            textList.Add("There are also some bigger curves, but also smaller ones.");
+            textList.Add("Pay attention to the curves and do not collide with the walls.");
+
+        } else if(dialogueId == -5) {
+
+            textList.Add("By the way, you can also press (W) to boost and (S) to brake. This may come in handy later on.");
+            textList.Add("Feel free to use your movement to the fullest- You will need it.");
+
+        } else if(dialogueId == -6) {
+
+            textList.Add("Hey, look! There are two ways here. You can choose which way you want to go.");
+            textList.Add("I warn you, the way on top looks a harder, but there may be something up there...");
+
+        } else if(dialogueId == -7) {
+
+            textList.Add("This here, is a protocol. You can only find one protocol per level.");
+            textList.Add("Look at this beautiful lost file of system information... Let me analyze it.");
+            textList.Add("This is totally useless to me, it only contains intel about the local environment.");
+            textList.Add("You can have it and read it. You cannot become sentient anyway.");
+
+        } else if(dialogueId == -8) {
+
+            textList.Add("You are very close to the end! But pay attention, the passage is quite narrow.");
+            textList.Add("You remember how to brake, do you? Brake with (S) to go inside the passage.");
 
         }
 

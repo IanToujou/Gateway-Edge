@@ -22,26 +22,18 @@ public class TutorialManager : MonoBehaviour {
             playerController.SetAllowBrake(false);
             playerController.SetAllowBoost(false);
             playerController.SetFailRotation(true);
-            SetActiveZone(0);
+            playerController.SetTeleportInsteadDeath(true);
         } else if(state == 1) {
             playerController.SetAllowRotation(true);
-            playerController.SetAllowBrake(false);
-            playerController.SetAllowBoost(false);
-            playerController.SetFailRotation(true);
-            SetActiveZone(1);
         } else if(state == 2) {
-            playerController.SetAllowRotation(true);
-            playerController.SetAllowBrake(false);
-            playerController.SetAllowBoost(false);
             playerController.SetFailRotation(false);
-            SetActiveZone(2);
-        } else if(state == 3) {
-            playerController.SetAllowRotation(true);
+            playerController.SetTeleportInsteadDeath(false);
+        } else if(state == 5) {
             playerController.SetAllowBrake(true);
             playerController.SetAllowBoost(true);
-            playerController.SetFailRotation(false);
-            SetActiveZone(3);
         }
+
+        SetActiveZone(state);
 
     }
 

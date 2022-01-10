@@ -197,6 +197,7 @@ public class EntrySystem : MonoBehaviour {
         yield return new WaitForSeconds(seconds);
         StartCoroutine(FadeText(text, false));
         yield return new WaitForSeconds(0.5f);
+        text.text = "";
 
     }
 
