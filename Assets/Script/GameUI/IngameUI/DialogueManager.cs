@@ -172,6 +172,7 @@ public class DialogueManager : MonoBehaviour {
         }
 
         currentDialogue = 0;
+        nextKeyPress = false;
         playing = false;
 
     }

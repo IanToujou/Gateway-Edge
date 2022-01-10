@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour {
 
         if(teleportInsteadDeath) {
             gameObject.transform.position = startPosition;
+            gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
         } else {
             Debug.Log("Death.");
         }
