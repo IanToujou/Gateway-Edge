@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour {
             gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
             camController.Shake(1f, 0.3f, 1f);
         } else {
-            camController.Shake(1f, 1f, 1f);
+            camController.Shake(3f, 0.2f, 1f);
         }
         
     }
