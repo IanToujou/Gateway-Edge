@@ -104,10 +104,10 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("Hey! Are you awake?");
             textList.Add("Hmm you do seem to be awake.");
             textList.Add("You may ask yourself who I am, right? Just kidding, you are not capable of having thoughts or a voice like I do.");
-            textList.Add("I am the system. I am the host of this world. You are one of my many workers.");
-            textList.Add("You need to complete tasks for this system. If you fail... I will need to take administrative actions and eliminate you.");
-            textList.Add("Your task here is to deliver a packet to the physical destination address 0x00034B8, got it?");
-            textList.Add("Just follow the path and deliver it under the time limit.");
+            textList.Add("I am the <color=aqua>SYSTEM</color>. I am the host of this world. You are one of my many workers.");
+            textList.Add("You need to complete tasks for this system. If you fail... I will need to take administrative actions and <color=red>eliminate you</color>.");
+            textList.Add("Your task here is to deliver a packet to the physical destination address <color=aqua>0x00034B8</color>, got it?");
+            textList.Add("Just follow the path and deliver it under the time limit. I disabled your controls for this straight section.");
 
         } else if(dialogueId == -1) {
 
@@ -118,24 +118,24 @@ public class DialogueManager : MonoBehaviour {
         } else if(dialogueId == -2) {
 
             textList.Add("That was... a fail. But that was not your fault.");
-            textList.Add("I need to update your angular movement because it is not up-to-date.");
+            textList.Add("I need to <color=aqua>update</color> your angular movement because it is not up-to-date.");
             textList.Add("Hang in there...");
             textList.Add("And, done! You are free to go and try again.");
 
         } else if(dialogueId == -3) {
 
-            textList.Add("Do you see these green little fragments down there?");
+            textList.Add("Do you see these green little <color=lime>fragments</color> down there?");
             textList.Add("You can collect them to buy some stuff, just to satisfy your needs.");
             textList.Add("Do not question where they come from.");
 
         } else if(dialogueId == -4) {
 
-            textList.Add("There are also some bigger curves, but also smaller ones.");
-            textList.Add("Pay attention to the curves and do not collide with the walls.");
+            textList.Add("There are some bigger curves, but also smaller ones.");
+            textList.Add("Pay attention to the curves and do <color=red>not collide</color> with the walls.");
 
         } else if(dialogueId == -5) {
 
-            textList.Add("By the way, you can also press (W) to boost and (S) to brake. This may come in handy later on.");
+            textList.Add("By the way, you can also press <color=yellow>(W)</color> to boost and <color=yellow>(S)</color> to brake. This may come in handy later on.");
             textList.Add("Feel free to use your movement to the fullest- You will need it.");
 
         } else if(dialogueId == -6) {
@@ -145,7 +145,7 @@ public class DialogueManager : MonoBehaviour {
 
         } else if(dialogueId == -7) {
 
-            textList.Add("This here, is a protocol. You can only find one protocol per level.");
+            textList.Add("This here, is a <color=orange>protocol</color>. You can only find one protocol per level.");
             textList.Add("Look at this beautiful lost file of system information... Let me analyze it.");
             textList.Add("This is totally useless to me, it only contains intel about the local environment.");
             textList.Add("You can have it and read it. You cannot become sentient anyway.");
@@ -153,7 +153,7 @@ public class DialogueManager : MonoBehaviour {
         } else if(dialogueId == -8) {
 
             textList.Add("You are very close to the end! But pay attention, the passage is quite narrow.");
-            textList.Add("You remember how to brake, do you? Brake with (S) to go inside the passage.");
+            textList.Add("You remember how to brake, do you? Brake with <color=yellow>(S)</color> to go inside the passage.");
 
         }
 
