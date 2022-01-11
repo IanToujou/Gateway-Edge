@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject trail;
 
     private Camera cam;
+    private PlayerCamera camController;
     private Rigidbody rb;
     private float speedMultiplier;
     private bool boosting;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         cam = FindObjectOfType<Camera>();
+        camController = cam.GetComponent<PlayerCamera>();
         rb = GetComponent<Rigidbody>();
         speedMultiplier = 1;
         boosting = false;
@@ -84,6 +86,7 @@ public class PlayerController : MonoBehaviour {
             if(boosting && !braking) {
 
                 currentRotationSpeed = boostRotationSpeed;
+                camController.Shake(0.1f, 0.1f, 1f);
 
                 //Check if the player magnitude is at maximum speed. If not, accelerate.
                 if(rb.velocity.magnitude <= maxSpeed - 0.1f) {
@@ -134,7 +137,9 @@ public class PlayerController : MonoBehaviour {
 
         //Check for death
         if(collision.gameObject.CompareTag("Wall")) {
-            if(rb.velocity.magnitude >= deathSpeed) {
+            if(failRotation) {
+                Die();
+            } else if(rb.velocity.magnitude >= deathSpeed) {
                 Die();
             }
         }
@@ -146,8 +151,9 @@ public class PlayerController : MonoBehaviour {
         if(teleportInsteadDeath) {
             gameObject.transform.position = startPosition;
             gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+            camController.Shake(1f, 0.3f, 1f);
         } else {
-            Debug.Log("Death.");
+            camController.Shake(1f, 1f, 1f);
         }
         
     }
