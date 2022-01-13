@@ -155,6 +155,11 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("You are very close to the end! But pay attention, the passage is quite narrow.");
             textList.Add("You remember how to brake, do you? Brake with <color=yellow>(S)</color> to go inside the passage.");
 
+        } else if(dialogueId == 11) {
+
+            textList.Add("Well done! You successfully completed the tutorial. I hope you will not fail the next one.");
+            textList.Add("Alright... We will go to the <color=aqua>system overview</color>.");
+
         }
 
         foreach(string currentText in textList) {

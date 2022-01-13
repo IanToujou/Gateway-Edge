@@ -22,8 +22,20 @@ public class LevelManager : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    void Start() {
+        StartLevel();
+    }
+
     void Update() {
         fragmentText.text = fragments.ToString();
+    }
+
+    public void StartLevel() {
+        dialogueManager.SetActiveDialogue(IngameDialogue.LEVEL_1_START);
+    }
+
+    public void EndLevel() {
+        dialogueManager.SetActiveDialogue(IngameDialogue.LEVEL_1_END);
     }
 
     public void Destroy() {
