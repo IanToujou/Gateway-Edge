@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BrakingPad : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class BrakingPad : MonoBehaviour {
+
+    void OnTriggerEnter(Collider collider) {
+
+        if(collider.CompareTag("Player")) {
+            
+            LevelManager.GetCurrentManager().GetPlayerController().SetBrakingPad(true);
+
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void OnTriggerExit(Collider collider) {
+
+        if(collider.CompareTag("Player")) {
+            
+            LevelManager.GetCurrentManager().GetPlayerController().SetBrakingPad(false);
+
+        }
+
     }
+    
 }

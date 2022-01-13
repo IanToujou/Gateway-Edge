@@ -16,7 +16,9 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     private float speedMultiplier;
     private bool boosting;
+    private bool boostingPad;
     private bool braking;
+    private bool brakingPad;
     private float currentRotationSpeed;
     private bool freezed;
     private Vector3 startPosition;
@@ -34,7 +36,9 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         speedMultiplier = 1;
         boosting = false;
+        boostingPad = false;
         braking = false;
+        brakingPad = false;
         currentRotationSpeed = rotationSpeed;
         freezed = false;
         startPosition = gameObject.transform.position;
@@ -80,6 +84,25 @@ public class PlayerController : MonoBehaviour {
                 Vector3 pointToMove = Vector3.RotateTowards(rb.rotation.eulerAngles, pointToLook - transform.position, Mathf.PI / 2, 0.5f);
                 Quaternion targetRotation = Quaternion.LookRotation(pointToMove);
                 rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, 0.1f * currentRotationSpeed);
+            }
+
+            if(boostingPad) {
+                currentRotationSpeed = boostRotationSpeed;
+                camController.Shake(0.1f, 0.1f, 1f);
+                if(rb.velocity.magnitude <= minSpeed - 0.1f) {
+                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + acceleration * speedMultiplier * 30));
+                    speedMultiplier++;
+                }
+                return;
+            }
+
+            if(brakingPad) {
+                currentRotationSpeed = boostRotationSpeed;
+                if(rb.velocity.magnitude >= minSpeed + 0.1f) {
+                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + acceleration * speedMultiplier));
+                    speedMultiplier--;
+                }
+                return;
             }
 
             //Check for any controls
@@ -156,6 +179,14 @@ public class PlayerController : MonoBehaviour {
             camController.Shake(3f, 0.2f, 1f);
         }
         
+    }
+    
+    public void SetBoostingPad(bool boostingPad) {
+        this.boostingPad = boostingPad;
+    }
+
+    public void SetBrakingPad(bool brakingPad) {
+        this.brakingPad = brakingPad;
     }
 
     public void SetFreezed(bool freezed) {

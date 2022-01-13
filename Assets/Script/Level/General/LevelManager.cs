@@ -80,8 +80,8 @@ public class LevelManager : MonoBehaviour {
         return player;
     }
 
-    public void SetPlayer(GameObject player) {
-        this.player = player;
+    public PlayerController GetPlayerController() {
+        return player.GetComponent<PlayerController>();
     }
 
 }
