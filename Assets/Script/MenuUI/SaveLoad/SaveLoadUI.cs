@@ -13,12 +13,14 @@ public class SaveLoadUI : MonoBehaviour {
     private int selectedSave;
     private Text loadButtonText;
     private bool loadActive;
+    private SaveManager saveManager;
 
     void Awake() {
         loadActive = false;
         overlayPanel.gameObject.SetActive(false);
         selectedSave = 0;
         loadButtonText = loadButton.GetComponentInChildren<Text>();
+        saveManager = SaveManager.GetInstance();
     }
 
     void Update() {
@@ -68,8 +70,9 @@ public class SaveLoadUI : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
 
-        if(PlayerPrefs.HasKey("Save" + selectedSave + "_Active")) {
-            SaveManager.LoadSave(selectedSave);
+        if(saveManager.DoesSaveExist(selectedSave)) {
+            saveManager.Load(selectedSave);
+            //SceneManager.LoadScene("ZoneSelection");
         } else {
             SceneManager.LoadScene("SceneEntry");
         }

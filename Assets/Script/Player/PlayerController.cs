@@ -179,7 +179,7 @@ public class PlayerController : MonoBehaviour {
         } else {
             camController.Shake(3f, 0.2f, 1f);
             LevelManager.GetCurrentManager().PlayerDeath();
-            dead = true; //damn, so relatable
+            dead = true;
         }
         
     }
