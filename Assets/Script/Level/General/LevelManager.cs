@@ -8,9 +8,9 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] private string levelId;
     [SerializeField] private Text fragmentText;
     [SerializeField] private DialogueManager dialogueManager;
+    [SerializeField] private DeathPanel deathPanel;
 
     private static LevelManager instance;
-
     private GameObject player;
     private int fragments;
     private bool teleporterActive;
@@ -36,6 +36,10 @@ public class LevelManager : MonoBehaviour {
 
     public void EndLevel() {
         dialogueManager.SetActiveDialogue(IngameDialogue.LEVEL_1_END);
+    }
+
+    public void PlayerDeath() {
+        deathPanel.Animate();
     }
 
     public void Destroy() {

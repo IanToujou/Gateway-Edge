@@ -161,15 +161,15 @@ public class PlayerController : MonoBehaviour {
         //Check for death
         if(collision.gameObject.CompareTag("Wall")) {
             if(failRotation) {
-                Die();
+                PlayerDeath();
             } else if(rb.velocity.magnitude >= deathSpeed) {
-                Die();
+                PlayerDeath();
             }
         }
 
     }
 
-    void Die() {
+    void PlayerDeath() {
 
         if(teleportInsteadDeath) {
             gameObject.transform.position = startPosition;
@@ -177,6 +177,8 @@ public class PlayerController : MonoBehaviour {
             camController.Shake(1f, 0.3f, 1f);
         } else {
             camController.Shake(3f, 0.2f, 1f);
+            LevelManager.GetCurrentManager().PlayerDeath();
+            freezed = true;
         }
         
     }
