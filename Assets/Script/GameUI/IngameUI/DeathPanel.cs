@@ -21,7 +21,7 @@ public class DeathPanel : MonoBehaviour {
 
     private IEnumerator FadeOverlay() {
 
-        for (float i = 0; i <= 1; i += Time.deltaTime) {
+        for (float i = 0; i <= 0.8f; i += Time.deltaTime) {
             overlayPanel.color = new Color(0, 0, 0, i);
             yield return null;
         }
