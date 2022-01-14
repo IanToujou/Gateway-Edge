@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
     private bool brakingPad;
     private float currentRotationSpeed;
     private bool freezed;
+    private bool dead;
     private Vector3 startPosition;
     private bool teleportInsteadDeath;
 
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
 
-        if(freezed) {
+        if(freezed || dead) {
             trail.SetActive(false);
             rb.velocity = Vector3.zero;
             return;
@@ -178,7 +179,7 @@ public class PlayerController : MonoBehaviour {
         } else {
             camController.Shake(3f, 0.2f, 1f);
             LevelManager.GetCurrentManager().PlayerDeath();
-            freezed = true;
+            dead = true; //damn, so relatable
         }
         
     }

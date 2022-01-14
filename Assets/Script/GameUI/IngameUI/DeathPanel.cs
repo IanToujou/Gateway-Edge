@@ -1,19 +1,18 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DeathPanel : MonoBehaviour {
 
-    [SerializeField] private GameObject deathText;
-    [SerializeField] private GameObject deathsubText;
+    [SerializeField] private List<GameObject> textList = new List<GameObject>();
 
     private Image overlayPanel;
 
     void Awake() {
         overlayPanel = gameObject.GetComponent<Image>();
         overlayPanel.color = new Color(0, 0, 0, 0);
-        deathText.SetActive(false);
-        deathsubText.SetActive(false);
+        SetTextActive(false);
     }
 
     public void Animate() {
@@ -27,9 +26,14 @@ public class DeathPanel : MonoBehaviour {
             yield return null;
         }
 
-        deathText.SetActive(true);
-        deathsubText.SetActive(true);
+        SetTextActive(true);
 
+    }
+
+    private void SetTextActive(bool active) {
+        foreach(GameObject current in textList) {
+            current.SetActive(active);
+        }
     }
 
 }
