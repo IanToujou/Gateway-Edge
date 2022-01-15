@@ -65368,7 +65368,9 @@ MonoBehaviour:
   maxSpeed: 17
   minSpeed: 4
   acceleration: 0.5
-  deathSpeed: 4
+  playerHealth: 5
+  deathSpeed: 5
+  damageDelay: 1
   trail: {fileID: 218705948}
 --- !u!54 &1542494448
 Rigidbody:
@@ -67710,7 +67712,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16982
+  m_Name: pb_Mesh17000
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

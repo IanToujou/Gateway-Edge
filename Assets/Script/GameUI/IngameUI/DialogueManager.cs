@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour {
     
@@ -159,10 +160,16 @@ public class DialogueManager : MonoBehaviour {
 
             textList.Add("Well done! You successfully completed the tutorial. I hope you will not fail the next one.");
             textList.Add("Alright... We will go to the <color=aqua>system overview</color>.");
+            textList.Add("CMD_GOTO_OVERVIEW_1");
 
         }
 
         foreach(string currentText in textList) {
+
+                if(currentText.Equals("CMD_GOTO_OVERVIEW_1")) {
+                    SceneManager.LoadScene("SceneZone1");
+                    StopCoroutine(PlayDialogue(11));
+                }
 
                 SetContentText(currentText);
                 yield return new WaitForSeconds(0.25f);

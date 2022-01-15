@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour {
     
@@ -8,7 +9,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float maxSpeed;
     [SerializeField] private float minSpeed;
     [SerializeField] private float acceleration;
+    [SerializeField] private int playerHealth;
     [SerializeField] private float deathSpeed;
+    [SerializeField] private float damageDelay;
     [SerializeField] private GameObject trail;
 
     private Camera cam;
@@ -24,7 +27,7 @@ public class PlayerController : MonoBehaviour {
     private bool dead;
     private Vector3 startPosition;
     private bool teleportInsteadDeath;
-    private int playerHealth;
+    private bool damageDelayed;
 
     //Disable controls in the tutorial
     private bool allowRotation = true;
@@ -49,7 +52,7 @@ public class PlayerController : MonoBehaviour {
         allowBoost = true;
         failRotation = false;
         teleportInsteadDeath = false;
-        playerHealth = 5;
+        damageDelayed = false;
     }
 
     void Update() {
@@ -182,18 +185,26 @@ public class PlayerController : MonoBehaviour {
 
         } else {
 
-            camController.Shake(3f, 0.2f, 1f);
-            playerHealth--;
+            if(damageDelayed) return;
+            StartCoroutine(TakeDamage());
 
             if(playerHealth <= 0) {
-
                 LevelManager.GetCurrentManager().PlayerDeath();
                 dead = true;
-
             }
             
         }
         
+    }
+
+    public IEnumerator TakeDamage() {
+
+        camController.Shake(3f, 0.2f, 1f);
+        playerHealth--;
+        damageDelayed = true;
+        yield return new WaitForSeconds(damageDelay);
+        damageDelayed = false;
+
     }
     
     public void SetBoostingPad(bool boostingPad) {
