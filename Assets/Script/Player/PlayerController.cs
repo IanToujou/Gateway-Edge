@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
     private bool dead;
     private Vector3 startPosition;
     private bool teleportInsteadDeath;
+    private int playerHealth;
 
     //Disable controls in the tutorial
     private bool allowRotation = true;
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour {
         allowBoost = true;
         failRotation = false;
         teleportInsteadDeath = false;
+        playerHealth = 5;
     }
 
     void Update() {
@@ -173,13 +175,23 @@ public class PlayerController : MonoBehaviour {
     void PlayerDeath() {
 
         if(teleportInsteadDeath) {
+
             gameObject.transform.position = startPosition;
             gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
             camController.Shake(1f, 0.3f, 1f);
+
         } else {
+
             camController.Shake(3f, 0.2f, 1f);
-            LevelManager.GetCurrentManager().PlayerDeath();
-            dead = true;
+            playerHealth--;
+
+            if(playerHealth <= 0) {
+
+                LevelManager.GetCurrentManager().PlayerDeath();
+                dead = true;
+
+            }
+            
         }
         
     }
@@ -238,6 +250,14 @@ public class PlayerController : MonoBehaviour {
 
     public void SetTeleportInsteadDeath(bool teleportInsteadDeath) {
         this.teleportInsteadDeath = teleportInsteadDeath;
+    }
+
+    public int GetPlayerHealth() {
+        return playerHealth;
+    }
+
+    public void SetPlayerHealth(int playerHealth) {
+        this.playerHealth = playerHealth;
     }
 
 }

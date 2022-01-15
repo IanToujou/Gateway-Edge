@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-public class SaveManager : MonoBehaviour {
+public class SaveManager {
     
     private static SaveManager instance;
-    private List<Save> saves = new List<Save>();
+    private List<Save> saves = CreateEmptySaveList();
 
     void Awake() {
         saves.Add(null);
@@ -73,6 +73,14 @@ public class SaveManager : MonoBehaviour {
     public void TestButton() {
         GetSave(1);
         Save(1);
+    }
+
+    private static List<Save> CreateEmptySaveList() {
+        List<Save> list = new List<Save>();
+        list.Add(null);
+        list.Add(null);
+        list.Add(null);
+        return list;
     }
 
 }

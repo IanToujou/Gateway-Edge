@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour {
     
     [SerializeField] private string levelId;
     [SerializeField] private Text fragmentText;
+    [SerializeField] private Text playerHealthText;
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private DeathPanel deathPanel;
 
@@ -27,7 +28,8 @@ public class LevelManager : MonoBehaviour {
     }
 
     void Update() {
-        fragmentText.text = fragments.ToString();
+        fragmentText.text = "Fragments: " + fragments;
+        playerHealthText.text = "HP: " + GetPlayerController().GetPlayerHealth();
     }
 
     public void StartLevel() {
