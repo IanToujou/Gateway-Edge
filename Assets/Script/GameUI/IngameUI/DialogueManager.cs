@@ -167,7 +167,7 @@ public class DialogueManager : MonoBehaviour {
         foreach(string currentText in textList) {
 
                 if(currentText.Equals("CMD_GOTO_OVERVIEW_1")) {
-                    SceneManager.LoadScene("SceneZone1");
+                    SceneManager.LoadScene("SceneZoneSelection");
                     StopCoroutine(PlayDialogue(11));
                 }
 

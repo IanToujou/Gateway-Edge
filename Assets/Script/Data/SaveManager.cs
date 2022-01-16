@@ -6,25 +6,39 @@ using UnityEngine;
 public class SaveManager {
     
     private static SaveManager instance;
+    private int currentSave;
     private List<Save> saves = CreateEmptySaveList();
 
     void Awake() {
         saves.Add(null);
         saves.Add(null);
         saves.Add(null);
+        if(currentSave == 0) currentSave = 1;
     }
 
     public Save GetSave(int saveNumber) {
         if(!IsSaveLoaded(saveNumber)) Load(saveNumber);
-        return saves[saveNumber];
+        return saves[saveNumber-1];
+    }
+
+    public Save GetCurrentSave() {
+        return GetSave(currentSave);
+    }
+
+    public void SetCurrentSave(int currentSave) {
+        this.currentSave = currentSave;
     }
 
     public void Save(int saveNumber) {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave_" + saveNumber + ".save");
-        bf.Serialize(file, saves[saveNumber]);
+        bf.Serialize(file, saves[saveNumber-1]);
         Debug.Log("Wrote save file " + saveNumber + " to path: " + Application.persistentDataPath + "/");
         file.Close();
+    }
+
+    public void SaveCurrent() {
+        Save(currentSave);
     }
 
     public void Load(int saveNumber) {
@@ -33,12 +47,16 @@ public class SaveManager {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/gamesave_" + saveNumber + ".save", FileMode.Open);
             Save save = (Save) bf.Deserialize(file);
-            saves[saveNumber] = save;
+            saves[saveNumber-1] = save;
             file.Close();
         } else {
             CreateNewSave(saveNumber);
         }
         
+    }
+
+    public void LoadCurrent() {
+        Load(currentSave);
     }
 
     public bool DoesSaveExist(int saveNumber) {
@@ -57,7 +75,7 @@ public class SaveManager {
 
     public Save CreateNewSave(int saveNumber) {
         Save save = new Save();
-        saves[saveNumber] = save;
+        saves[saveNumber-1] = save;
         return save;
     }
 

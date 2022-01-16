@@ -23,6 +23,17 @@ public class SaveLoadUI : MonoBehaviour {
         saveManager = SaveManager.GetInstance();
     }
 
+    void Start() {
+
+        for(int i = 1; i <= saves.Count; i++) {
+            GameObject currentSave = saves[i-1];
+            if(SaveManager.GetInstance().DoesSaveExist(i)) {
+                currentSave.GetComponentInChildren<Text>().text = "Save " + i + ": Data Found";
+            }
+        }
+
+    }
+
     void Update() {
 
         if(selectedSave > 0) {
@@ -72,7 +83,7 @@ public class SaveLoadUI : MonoBehaviour {
 
         if(saveManager.DoesSaveExist(selectedSave)) {
             saveManager.Load(selectedSave);
-            //SceneManager.LoadScene("ZoneSelection");
+            SceneManager.LoadScene("SceneZoneSelection");
         } else {
             SceneManager.LoadScene("SceneEntry");
         }

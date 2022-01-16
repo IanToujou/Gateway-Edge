@@ -107,14 +107,14 @@ public class EntrySystem : MonoBehaviour {
         yield return new WaitForSeconds(2);
 
         //Text
-        ShowText(dialogueText, "[???] Okay, this doesn't seem to work...", 3);
+        ShowText(dialogueText, "[???] Okay, this does not seem to work...", 3);
         yield return new WaitForSeconds(4);
 
         //Delay
         yield return new WaitForSeconds(1);
 
         //Text
-        ShowText(dialogueText, "[???] I'm going to re-initialize your system. Please wait...", 5);
+        ShowText(dialogueText, "[???] I am going to re-initialize your system. Please wait...", 5);
         yield return new WaitForSeconds(6);
 
         //Delay
@@ -128,7 +128,7 @@ public class EntrySystem : MonoBehaviour {
         yield return new WaitForSeconds(2);
 
         //Text
-        ShowText(dialogueText, "[???] I'm going to reboot you now, please don't do ANYTHING. Got it?", 5);
+        ShowText(dialogueText, "[???] I am going to reboot you now, please don't do ANYTHING. Got it?", 5);
         yield return new WaitForSeconds(6);
 
         //Delay

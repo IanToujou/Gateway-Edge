@@ -72,6 +72,9 @@ public class LevelManager : MonoBehaviour {
 
     public void EndLevel() {
         dialogueManager.SetActiveDialogue(IngameDialogue.LEVEL_1_END);
+        SaveManager.GetInstance().GetCurrentSave().fragments += fragments;
+        SaveManager.GetInstance().GetCurrentSave().level_1_completed = true;
+        SaveManager.GetInstance().SaveCurrent();
     }
 
     public void PlayerDeath() {
