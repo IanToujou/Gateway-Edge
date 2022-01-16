@@ -70,9 +70,11 @@ public class PlayerController : MonoBehaviour {
         if(freezed || dead) {
             trail.SetActive(false);
             rb.velocity = Vector3.zero;
+            LevelManager.GetCurrentManager().StopTimer();
             return;
         } else {
             trail.SetActive(true);
+            LevelManager.GetCurrentManager().StartTimer();
         }
 
         //Create a camera ray that points on a virtual ground plane to find the mouse cursor.
