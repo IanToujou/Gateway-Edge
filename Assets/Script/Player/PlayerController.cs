@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -62,6 +63,15 @@ public class PlayerController : MonoBehaviour {
         //Update controls
         if(allowBoost) boosting = (Input.GetAxisRaw("Vertical") >= 0.5f);
         if(allowBrake) braking = (Input.GetAxisRaw("Vertical") <= -0.5f);
+
+        if(dead) {
+            if(Input.GetKeyDown(KeyCode.Space)) {
+                SceneManager.LoadScene("Scene" + LevelManager.GetCurrentManager().GetLevelId().Replace("_", ""));
+            }
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+                SceneManager.LoadScene("SceneLevelSelection");
+            }
+        }
 
     }
 

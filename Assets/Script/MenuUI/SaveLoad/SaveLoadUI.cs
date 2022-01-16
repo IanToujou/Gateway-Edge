@@ -83,7 +83,7 @@ public class SaveLoadUI : MonoBehaviour {
 
         if(saveManager.DoesSaveExist(selectedSave)) {
             saveManager.Load(selectedSave);
-            SceneManager.LoadScene("SceneZoneSelection");
+            SceneManager.LoadScene("SceneLevelSelection");
         } else {
             SceneManager.LoadScene("SceneEntry");
         }

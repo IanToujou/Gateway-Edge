@@ -42,20 +42,8 @@ public class LevelManager : MonoBehaviour {
         if(timerActive) {
 
             timerTime -= Time.deltaTime;
-
-            string timeString = timerTime.ToString();
-            Debug.Log(timeString);
-            string seconds = timeString.Substring(0, 2);
-            string millis = timeString.Substring(2, 3);
-
             TimeSpan t = TimeSpan.FromSeconds(timerTime);
-
-            string answer = string.Format("{0:D2}:{1:D2}:{2:D3}", 
-            t.Minutes, 
-            t.Seconds, 
-            t.Milliseconds);
-
-            //timerText.text = Mathf.Floor(timerTime/60) + ":" + seconds + ":" + millis + ":00";
+            string answer = string.Format("{0:D2}:{1:D2}:{2:D3}", t.Minutes, t.Seconds, t.Milliseconds);
             timerText.text = answer;
 
             if(timerTime <= 0.0f) {
@@ -71,10 +59,10 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void EndLevel() {
-        dialogueManager.SetActiveDialogue(IngameDialogue.LEVEL_1_END);
         SaveManager.GetInstance().GetCurrentSave().fragments += fragments;
         SaveManager.GetInstance().GetCurrentSave().level_1_completed = true;
         SaveManager.GetInstance().SaveCurrent();
+        dialogueManager.SetActiveDialogue(IngameDialogue.LEVEL_1_END);
     }
 
     public void PlayerDeath() {
@@ -145,6 +133,10 @@ public class LevelManager : MonoBehaviour {
 
     public void SetTimerActive(bool timerActive) {
         this.timerActive = timerActive;
+    }
+
+    public string GetLevelId() {
+        return levelId;
     }
 
 }

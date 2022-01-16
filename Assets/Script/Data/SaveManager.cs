@@ -9,11 +9,11 @@ public class SaveManager {
     private int currentSave;
     private List<Save> saves = CreateEmptySaveList();
 
-    void Awake() {
+    public SaveManager() {
         saves.Add(null);
         saves.Add(null);
         saves.Add(null);
-        if(currentSave == 0) currentSave = 1;
+        currentSave = 1;
     }
 
     public Save GetSave(int saveNumber) {
