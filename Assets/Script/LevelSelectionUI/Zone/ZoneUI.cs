@@ -9,10 +9,13 @@ public class ZoneUI : MonoBehaviour {
 
     void Start() {
 
-        SaveManager saveManager = SaveManager.GetInstance();        
+        SaveManager saveManager = SaveManager.GetInstance();
+
+        foreach(int cock in saveManager.GetCurrentSave().GetCompletedLevels()) {
+            Debug.Log(cock);
+        }
 
         for(int i = 1; i <= levelButtons.Count; i++) {
-            Debug.Log((zoneNumber-1)*6 + i);
             if(saveManager.GetCurrentSave().IsLevelCompleted((zoneNumber-1)*6 + i)) {
                 levelButtons[i-1].GetComponentInChildren<Text>().color = new Color(0, 1, 0, 1);
             } else {

@@ -63,7 +63,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void EndLevel() {
-        SaveManager.GetInstance().GetCurrentSave().fragments += fragments;
+        SaveManager.GetInstance().GetCurrentSave().AddFragments(fragments);
         SaveManager.GetInstance().GetCurrentSave().SetLevelCompleted(1);
         if(protocolCollected) SaveManager.GetInstance().GetCurrentSave().SetProtocolCollected(1);
         SaveManager.GetInstance().SaveCurrent();
