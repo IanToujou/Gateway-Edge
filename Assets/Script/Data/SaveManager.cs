@@ -14,7 +14,7 @@ public class SaveManager {
             if(DoesSaveExist(i)) {
                 Load(i);
             } else {
-                saves[i-1] = null;
+                saves[i-1] = new Save();
             }
         }
         currentSave = 1;
@@ -38,11 +38,7 @@ public class SaveManager {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave_" + saveNumber + ".save");
         
-        if(saves[saveNumber-1] != null) {
-            bf.Serialize(file, saves[saveNumber-1]);
-        } else {
-            bf.Serialize(file, new Save());
-        }
+        bf.Serialize(file, saves[saveNumber-1]);
         
         Debug.Log("Wrote save file " + saveNumber + " to path: " + Application.persistentDataPath + "/");
         file.Close();

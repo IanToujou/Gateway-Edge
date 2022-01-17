@@ -68,7 +68,7 @@ public class LevelManager : MonoBehaviour {
         if(protocolCollected) SaveManager.GetInstance().GetCurrentSave().SetProtocolCollected(1);
         SaveManager.GetInstance().SaveCurrent();
         dialogueManager.SetActiveDialogue(IngameDialogue.LEVEL_1_END);
-        Destroy();
+        StartCoroutine(DestroyDelayed(1f));
     }
 
     public void PlayerDeath() {
@@ -103,7 +103,12 @@ public class LevelManager : MonoBehaviour {
         this.protocolCollected = true;
     }
 
-    public void Destroy() {
+    public IEnumerator DestroyDelayed(float delay) {
+        yield return new WaitForSeconds(delay);
+        DestroyManager();
+    }
+
+    public void DestroyManager() {
         instance = null;
     }
 
