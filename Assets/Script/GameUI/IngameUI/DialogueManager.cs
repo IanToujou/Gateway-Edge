@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour {
             playerController.SetFreezed(true);
             dialoguePanel.SetActive(true);
 
-            if(Input.GetKeyDown(KeyCode.Space)) {
+            if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
                 nextKeyPress = true;
             }
 
@@ -160,13 +160,13 @@ public class DialogueManager : MonoBehaviour {
 
             textList.Add("Well done! You successfully completed the tutorial. I hope you will not fail the next one.");
             textList.Add("Alright... We will go to the <color=aqua>system overview</color>.");
-            textList.Add("CMD_GOTO_OVERVIEW_1");
+            textList.Add("CMD_GOTO_OVERVIEW");
 
         }
 
         foreach(string currentText in textList) {
 
-                if(currentText.Equals("CMD_GOTO_OVERVIEW_1")) {
+                if(currentText.Equals("CMD_GOTO_OVERVIEW")) {
                     SceneManager.LoadScene("SceneLevelSelection");
                     StopCoroutine(PlayDialogue(11));
                 }

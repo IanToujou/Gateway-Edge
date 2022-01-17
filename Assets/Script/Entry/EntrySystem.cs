@@ -128,14 +128,14 @@ public class EntrySystem : MonoBehaviour {
         yield return new WaitForSeconds(2);
 
         //Text
-        ShowText(dialogueText, "[???] I am going to reboot you now, please don't do ANYTHING. Got it?", 5);
+        ShowText(dialogueText, "[???] I am going to reboot you now, please do not do ANYTHING. Got it?", 5);
         yield return new WaitForSeconds(6);
 
         //Delay
         yield return new WaitForSeconds(2);
 
         //Text
-        ShowText(dialogueText, "[???] Good. I hope this won't damage you...", 4);
+        ShowText(dialogueText, "[???] Good. I hope this will not damage you...", 4);
         yield return new WaitForSeconds(5);
 
         //Post Delay
