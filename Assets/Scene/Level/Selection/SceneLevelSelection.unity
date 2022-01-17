@@ -6015,6 +6015,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 427272429}
+  - component: {fileID: 427272430}
   m_Layer: 0
   m_Name: Zone3UI
   m_TagString: Untagged
@@ -6037,6 +6038,26 @@ Transform:
   m_Father: {fileID: 931848715}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &427272430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427272428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698178bcb64981f4885d0d8719c37ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneNumber: 3
+  levelButtons:
+  - {fileID: 707916198}
+  - {fileID: 601032481}
+  - {fileID: 52763594}
+  - {fileID: 1298356699}
+  - {fileID: 516056868}
+  - {fileID: 361478839}
 --- !u!1 &439925752
 GameObject:
   m_ObjectHideFlags: 0
@@ -8556,6 +8577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1088738088}
+  - component: {fileID: 1088738089}
   m_Layer: 0
   m_Name: Zone2UI
   m_TagString: Untagged
@@ -8578,6 +8600,26 @@ Transform:
   m_Father: {fileID: 931848715}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1088738089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088738087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698178bcb64981f4885d0d8719c37ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneNumber: 2
+  levelButtons:
+  - {fileID: 659790672}
+  - {fileID: 718023145}
+  - {fileID: 1104568282}
+  - {fileID: 1984861940}
+  - {fileID: 1949815400}
+  - {fileID: 1388514477}
 --- !u!1 &1104568282
 GameObject:
   m_ObjectHideFlags: 0
@@ -9108,6 +9150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1243122889}
+  - component: {fileID: 1243122890}
   m_Layer: 0
   m_Name: Zone4UI
   m_TagString: Untagged
@@ -9130,6 +9173,26 @@ Transform:
   m_Father: {fileID: 931848715}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1243122890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243122888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698178bcb64981f4885d0d8719c37ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneNumber: 4
+  levelButtons:
+  - {fileID: 2067627270}
+  - {fileID: 201423812}
+  - {fileID: 1016767804}
+  - {fileID: 2115531768}
+  - {fileID: 180983714}
+  - {fileID: 1925083158}
 --- !u!1 &1284817761
 GameObject:
   m_ObjectHideFlags: 0
