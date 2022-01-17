@@ -10,13 +10,6 @@ public class ZoneUI : MonoBehaviour {
     void Start() {
 
         SaveManager saveManager = SaveManager.GetInstance();
-        saveManager.Save(1);
-
-        Debug.Log(saveManager.GetCurrentSave().GetFragments());
-
-        foreach(int cock in saveManager.GetCurrentSave().GetCompletedLevels()) {
-            Debug.Log(cock);
-        }
 
         for(int i = 1; i <= levelButtons.Count; i++) {
             if(saveManager.GetCurrentSave().IsLevelCompleted((zoneNumber-1)*6 + i)) {
