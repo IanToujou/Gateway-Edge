@@ -10,9 +10,13 @@ public class SaveManager {
     private List<Save> saves = CreateEmptySaveList();
 
     public SaveManager() {
-        saves.Add(null);
-        saves.Add(null);
-        saves.Add(null);
+        for(int i = 1; i <= 3; i++) {
+            if(DoesSaveExist(i)) {
+                Load(i);
+            } else {
+                saves[i-1] = null;
+            }
+        }
         currentSave = 1;
     }
 
@@ -30,11 +34,19 @@ public class SaveManager {
     }
 
     public void Save(int saveNumber) {
+
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave_" + saveNumber + ".save");
-        bf.Serialize(file, saves[saveNumber-1]);
+        
+        if(saves[saveNumber-1] != null) {
+            bf.Serialize(file, saves[saveNumber-1]);
+        } else {
+            bf.Serialize(file, new Save());
+        }
+        
         Debug.Log("Wrote save file " + saveNumber + " to path: " + Application.persistentDataPath + "/");
         file.Close();
+
     }
 
     public void SaveCurrent() {
@@ -60,8 +72,10 @@ public class SaveManager {
     }
 
     public bool DoesSaveExist(int saveNumber) {
+        
+        if(saves.Count < saveNumber) return false;
 
-        if(File.Exists(Application.persistentDataPath + "/gamesave_" + saveNumber + ".save") || saves[saveNumber] != null) {
+        if(File.Exists(Application.persistentDataPath + "/gamesave_" + saveNumber + ".save") || saves[saveNumber-1] != null) {
             return true;
         }
 

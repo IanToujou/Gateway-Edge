@@ -10,6 +10,9 @@ public class ZoneUI : MonoBehaviour {
     void Start() {
 
         SaveManager saveManager = SaveManager.GetInstance();
+        saveManager.Save(1);
+
+        Debug.Log(saveManager.GetCurrentSave().GetFragments());
 
         foreach(int cock in saveManager.GetCurrentSave().GetCompletedLevels()) {
             Debug.Log(cock);
