@@ -415,6 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6271492995634156201}
   - component: {fileID: 4454597395895461424}
+  - component: {fileID: 756339564}
   m_Layer: 0
   m_Name: ItemTimer
   m_TagString: Untagged
@@ -449,6 +450,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39a03fb2bfabe14da5db539c9932e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &756339564
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376538295802345895}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.57487965, y: 0.9200611, z: 0.69854903}
+  m_Center: {x: 0.025137424, y: 0.039969444, z: 0.02121377}
 --- !u!1 &3607880539959655621
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class LevelSelectionUIManager : MonoBehaviour{
+public class LevelSelectionUIManager : MonoBehaviour {
 
     [SerializeField] private GameObject zone1UI;
     [SerializeField] private GameObject zone2UI;

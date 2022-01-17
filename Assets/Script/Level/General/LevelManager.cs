@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] private Text fragmentText;
     [SerializeField] private Text playerHealthText;
     [SerializeField] private Text timerText;
+    [SerializeField] private Text protocolText;
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private DeathPanel deathPanel;
     [SerializeField] private float timeLimit;
@@ -20,6 +21,7 @@ public class LevelManager : MonoBehaviour {
     private bool teleporterActive;
     private bool timerActive;
     private float timerTime;
+    private bool protocolCollected;
 
     void Awake() {
         instance = this;
@@ -28,6 +30,7 @@ public class LevelManager : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         timerActive = false;
         timerTime = timeLimit;
+        protocolCollected = false;
     }
 
     void Start() {
@@ -36,8 +39,9 @@ public class LevelManager : MonoBehaviour {
 
     void Update() {
 
-        fragmentText.text = "Fragments: " + fragments;
-        playerHealthText.text = "HP: " + GetPlayerController().GetPlayerHealth();
+        fragmentText.text = "" + fragments;
+        playerHealthText.text = "" + GetPlayerController().GetPlayerHealth();
+        if(protocolCollected) protocolText.color = new Color(0, 255, 0, 1);
 
         if(timerActive) {
 
@@ -60,9 +64,11 @@ public class LevelManager : MonoBehaviour {
 
     public void EndLevel() {
         SaveManager.GetInstance().GetCurrentSave().fragments += fragments;
-        SaveManager.GetInstance().GetCurrentSave().level_1_completed = true;
+        SaveManager.GetInstance().GetCurrentSave().SetLevelCompleted(1);
+        if(protocolCollected) SaveManager.GetInstance().GetCurrentSave().SetProtocolCollected(1);
         SaveManager.GetInstance().SaveCurrent();
         dialogueManager.SetActiveDialogue(IngameDialogue.LEVEL_1_END);
+        Destroy();
     }
 
     public void PlayerDeath() {
@@ -79,6 +85,22 @@ public class LevelManager : MonoBehaviour {
 
     public void StartTimer() {
         SetTimerActive(true);
+    }
+
+    public void AddTime(int amount) {
+        timerTime += amount;
+    }
+
+    public void RemoveTime(int amount) {
+        timerTime -= amount;
+    }
+
+    public void SetTime(int amount) {
+        this.timerTime = amount;
+    }
+
+    public void CollectProtocol() {
+        this.protocolCollected = true;
     }
 
     public void Destroy() {

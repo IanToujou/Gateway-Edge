@@ -1,7 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemTimer : MonoBehaviour {
-    
+public class ItemProtocol : MonoBehaviour {
+
     private LevelManager manager;
 
     void Start() {
@@ -14,7 +16,7 @@ public class ItemTimer : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider) {
         if(collider.CompareTag("Player")) {
-            manager.AddTime(5);
+            manager.CollectProtocol();
             Destroy(gameObject);
         }
     }
