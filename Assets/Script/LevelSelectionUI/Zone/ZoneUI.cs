@@ -21,4 +21,20 @@ public class ZoneUI : MonoBehaviour {
 
     }
 
+    public void ButtonPressBack() {
+        if(zoneNumber == 2) LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_1);
+        if(zoneNumber == 3) LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_2);
+        if(zoneNumber == 4) LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_3);
+    }
+
+    public void ButtonPressNext() {
+        if(zoneNumber == 1) LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_2);
+        if(zoneNumber == 2) LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_3);
+        if(zoneNumber == 3) LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_4);
+    }
+
+    public void ButtonPressExit() {
+        LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.EXIT_CONFIRMATION);
+    }
+
 }

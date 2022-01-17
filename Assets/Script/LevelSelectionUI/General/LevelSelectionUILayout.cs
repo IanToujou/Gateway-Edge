@@ -6,5 +6,6 @@ public class LevelSelectionUILayout : MonoBehaviour {
     public const int ZONE_2 = 1;
     public const int ZONE_3 = 2;
     public const int ZONE_4 = 3;
+    public const int EXIT_CONFIRMATION = 4;
 
 }
