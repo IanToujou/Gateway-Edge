@@ -7,6 +7,7 @@ public class LevelSelectionUIManager : MonoBehaviour {
     [SerializeField] private GameObject zone2UI;
     [SerializeField] private GameObject zone3UI;
     [SerializeField] private GameObject zone4UI;
+    [SerializeField] private GameObject exitConfirmationUI;
     
     private static List<GameObject> uiList = new List<GameObject>();
     
@@ -16,6 +17,7 @@ public class LevelSelectionUIManager : MonoBehaviour {
         uiList.Add(zone2UI);
         uiList.Add(zone3UI);
         uiList.Add(zone4UI);
+        uiList.Add(exitConfirmationUI);
     }
 
     void Start() {
@@ -23,10 +25,8 @@ public class LevelSelectionUIManager : MonoBehaviour {
     }
 
     public static void SetActiveCanvas(int layout) {
-
         DeactivateAllCanvas();
         uiList[layout].SetActive(true);
-
     }
 
     public static void DeactivateAllCanvas() {

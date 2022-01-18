@@ -17,9 +17,10 @@ public class ZoneUI : MonoBehaviour {
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         particles = GameObject.Find("BackgroundParticles").GetComponent<ParticleSystem>();
         particleMainModule = particles.main;
+        particles.Clear();
 
-        playerCamera.backgroundColor = new Color(0.2455351f, 0f, 0.3867925f, 0f);
-        particleMainModule.startColor = new Color(1f, 0f, 0.5132675f, 1f);
+        //playerCamera.backgroundColor = new Color(0.2455351f, 0f, 0.3867925f, 0f);
+        //particleMainModule.startColor = new Color(1f, 0f, 0.5132675f, 1f);
 
         for(int i = 1; i <= levelButtons.Count; i++) {
             levelButtons[i-1].GetComponentInChildren<Text>().text = "Level - " + zoneNumber + "." + i;
@@ -33,6 +34,7 @@ public class ZoneUI : MonoBehaviour {
     }
 
     public void ButtonPressBack() {
+        particles.Clear();
         if(zoneNumber == 2) {
             LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_1);
             playerCamera.backgroundColor = new Color(0.2455351f, 0f, 0.3867925f, 0f);
@@ -51,6 +53,7 @@ public class ZoneUI : MonoBehaviour {
     }
 
     public void ButtonPressNext() {
+        particles.Clear();
         if(zoneNumber == 1) {
             LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_2);
             playerCamera.backgroundColor = new Color(0f, 0.03444649f, 0.245283f, 0f);
