@@ -3,20 +3,20 @@ using System.Collections.Generic;
 
 public class LevelSelectionUIManager : MonoBehaviour {
 
-    [SerializeField] private GameObject zone1UI;
-    [SerializeField] private GameObject zone2UI;
-    [SerializeField] private GameObject zone3UI;
-    [SerializeField] private GameObject zone4UI;
+    [SerializeField] private GameObject zoneOneUI;
+    [SerializeField] private GameObject zoneTwoUI;
+    [SerializeField] private GameObject zoneThreeUI;
+    [SerializeField] private GameObject zoneFourUI;
     [SerializeField] private GameObject exitConfirmationUI;
     
     private static List<GameObject> uiList = new List<GameObject>();
     
 
     void Awake() {
-        uiList.Add(zone1UI);
-        uiList.Add(zone2UI);
-        uiList.Add(zone3UI);
-        uiList.Add(zone4UI);
+        uiList.Add(zoneOneUI);
+        uiList.Add(zoneTwoUI);
+        uiList.Add(zoneThreeUI);
+        uiList.Add(zoneFourUI);
         uiList.Add(exitConfirmationUI);
     }
 
