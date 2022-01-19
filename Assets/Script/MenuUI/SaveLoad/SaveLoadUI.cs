@@ -27,8 +27,10 @@ public class SaveLoadUI : MonoBehaviour {
 
         for(int i = 1; i <= saves.Count; i++) {
             GameObject currentSave = saves[i-1];
-            if(SaveManager.GetInstance().DoesSaveExist(i)) {
+            if(saveManager.GetSave(i).IsSaveActive()) {
                 currentSave.GetComponentInChildren<Text>().text = "Save " + i + ": Data Found";
+            } else {
+                currentSave.GetComponentInChildren<Text>().text = "Save " + i + ": No Data";
             }
         }
 
