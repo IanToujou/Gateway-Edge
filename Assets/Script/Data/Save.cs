@@ -3,6 +3,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Save {
     
+    private bool saveActive;
     private int fragments;
     private List<int> completedLevels;
     private List<int> collectedProtocols;
@@ -11,6 +12,14 @@ public class Save {
         fragments = 0;
         completedLevels = new List<int>();
         collectedProtocols = new List<int>();
+    }
+
+    public bool IsSaveActive() {
+        return saveActive;
+    }
+
+    public void SetSaveActive(bool saveActive) {
+        this.saveActive = saveActive;
     }
 
     public int GetFragments() {

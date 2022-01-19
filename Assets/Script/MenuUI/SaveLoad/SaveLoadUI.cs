@@ -81,7 +81,7 @@ public class SaveLoadUI : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
 
-        if(saveManager.DoesSaveExist(selectedSave)) {
+        if(saveManager.GetSave(selectedSave).IsSaveActive()) {
             saveManager.Load(selectedSave);
             SceneManager.LoadScene("SceneLevelSelection");
         } else {
