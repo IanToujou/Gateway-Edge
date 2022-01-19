@@ -14,6 +14,7 @@ public class SaveLoadUI : MonoBehaviour {
     private Text loadButtonText;
     private bool loadActive;
     private SaveManager saveManager;
+    private UISoundManager soundManager;
 
     void Awake() {
         loadActive = false;
@@ -21,6 +22,7 @@ public class SaveLoadUI : MonoBehaviour {
         selectedSave = 0;
         loadButtonText = loadButton.GetComponentInChildren<Text>();
         saveManager = SaveManager.GetInstance();
+        soundManager = UISoundManager.GetInstance();
     }
 
     void Start() {
@@ -49,13 +51,15 @@ public class SaveLoadUI : MonoBehaviour {
     }
 
     public void ButtonPressBack() {
+        soundManager.PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
         MenuUIManager.SetActiveCanvas(MenuUILayout.MENU);
     }
 
     public void ButtonPressLoad() {
-
+        
         if(!loadActive) return;
         overlayPanel.gameObject.SetActive(true);
+        soundManager.PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
         StartCoroutine(FadeOverlay());
 
     }
@@ -71,6 +75,7 @@ public class SaveLoadUI : MonoBehaviour {
         GameObject currentSave = saves[saveNumber-1];
         Text currentSaveText = currentSave.GetComponentInChildren<Text>();
         currentSaveText.color = Color.cyan;
+        soundManager.PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
         
     }
 

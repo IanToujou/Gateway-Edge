@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float deathSpeed;
     [SerializeField] private float damageDelay;
     [SerializeField] private GameObject trail;
+    [SerializeField] private AudioSource engineAudioSource;
 
     private Camera cam;
     private PlayerCamera camController;
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour {
     void Update() {
 
         Vector3 moveInput = new Vector3(0, 0, 0);
+        engineAudioSource.loop = true;
 
         //Update controls
         if(allowBoost) boosting = (Input.GetAxisRaw("Vertical") >= 0.5f);
@@ -78,11 +80,13 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate() {
 
         if(freezed || dead) {
+            engineAudioSource.volume = 0f;
             trail.SetActive(false);
             rb.velocity = Vector3.zero;
             LevelManager.GetCurrentManager().StopTimer();
             return;
         } else {
+            engineAudioSource.volume = 0.1f;
             trail.SetActive(true);
             LevelManager.GetCurrentManager().StartTimer();
         }
