@@ -23,6 +23,8 @@ public class ZoneUI : MonoBehaviour {
             levelButtons[i-1].GetComponentInChildren<Text>().text = "Level - " + zoneNumber + "." + i;
             if(saveManager.GetCurrentSave().IsLevelCompleted((zoneNumber-1)*6 + i)) {
                 levelButtons[i-1].GetComponentInChildren<Text>().color = new Color(0, 1, 0, 1);
+                levelButtons[i].GetComponentInChildren<Text>().color = new Color(1f, 1f, 0, 1);
+                i++;
             } else {
                 levelButtons[i-1].GetComponentInChildren<Text>().color = new Color(0.2f, 0.2f, 0.2f, 1);
             }
@@ -53,18 +55,12 @@ public class ZoneUI : MonoBehaviour {
         particles.Clear();
         if(zoneNumber == 2) {
             LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_1);
-            //playerCamera.backgroundColor = new Color(0.2455351f, 0f, 0.3867925f, 0f);
-            //particleMainModule.startColor = new Color(1f, 0f, 0.5132675f, 1f);
         }
         if(zoneNumber == 3) {
             LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_2);
-            //playerCamera.backgroundColor = new Color(0f, 0.03444649f, 0.245283f, 0f);
-            //particleMainModule.startColor = new Color(0f, 0.9696946f, 1f, 1f);
         }
         if(zoneNumber == 4) {
             LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_3);
-            //.backgroundColor = new Color(0f, 0.2641509f, 0.1088356f, 0f);
-            //particleMainModule.startColor = new Color(0.3039824f, 1f, 0.1556604f, 1f);
         }
     }
 
@@ -72,18 +68,12 @@ public class ZoneUI : MonoBehaviour {
         particles.Clear();
         if(zoneNumber == 1) {
             LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_2);
-            //playerCamera.backgroundColor = new Color(0f, 0.03444649f, 0.245283f, 0f);
-            //particleMainModule.startColor = new Color(0f, 0.9696946f, 1f, 1f);
         }
         if(zoneNumber == 2) {
             LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_3);
-            //playerCamera.backgroundColor = new Color(0f, 0.2641509f, 0.1088356f, 0f);
-            //particleMainModule.startColor = new Color(0.3039824f, 1f, 0.1556604f, 1f);
         }
         if(zoneNumber == 3) {
             LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_4);
-            //playerCamera.backgroundColor = new Color(1f, 0.3480333f, 0f, 0f);
-            //particleMainModule.startColor = new Color(0.9330316f, 1f, 0f, 1f);
         }
     }
 
