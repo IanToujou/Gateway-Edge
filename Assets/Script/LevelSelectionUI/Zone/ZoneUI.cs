@@ -10,6 +10,7 @@ public class ZoneUI : MonoBehaviour {
     private Camera playerCamera;
     private ParticleSystem particles;
     private ParticleSystem.MainModule particleMainModule;
+    private List<int> allowedToEnter = new List<int>();
 
     void Start() {
 
@@ -48,6 +49,12 @@ public class ZoneUI : MonoBehaviour {
         } else if(zoneNumber == 4) {
             playerCamera.backgroundColor = new Color(1f, 0.3480333f, 0f, 0f);
             particleMainModule.startColor = new Color(0.9330316f, 1f, 0f, 1f);
+        }
+    }
+
+    public void ButtonPressLevel(int levelNumber) {
+        if(SaveManager.GetInstance().GetCurrentSave().IsLevelCompleted(levelNumber-1)) {
+            LevelManager.LoadLevel("Level_" + levelNumber);
         }
     }
 
