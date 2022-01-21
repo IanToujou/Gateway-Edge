@@ -3,8 +3,8 @@ public class IngameDialogue {
     //Zone start and ends
     public const int LEVEL_1_START = 10;
     public const int LEVEL_1_END = 11;
-    public const int LEVEL_2_START = 12;
-    public const int LEVEL_2_END = 13;
+    public const int LEVEL_2_START = 20;
+    public const int LEVEL_2_END = 21;
 
     //Event dialogues
     public const int TUTORIAL_CURVE_FAIL = -1;
@@ -17,5 +17,13 @@ public class IngameDialogue {
     public const int TUTORIAL_END = -8;
     public const int TUTORIAL_BOOSTER_PAD = -9;
     public const int TUTORIAL_BRAKING_PAD = -10;
+
+    public static int GetEndDialogue(int levelId) {
+        return levelId * 10 + 1;
+    }
+
+    public static int GetStartDialogue(int levelId) {
+        return levelId * 10;
+    }
 
 }

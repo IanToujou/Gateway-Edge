@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour {
     private bool timerActive;
     private float timerTime;
     private bool protocolCollected;
+    private int levelIdNumber;
 
     void Awake() {
         instance = this;
@@ -31,6 +32,9 @@ public class LevelManager : MonoBehaviour {
         timerActive = false;
         timerTime = timeLimit;
         protocolCollected = false;
+        levelIdNumber = Int32.Parse(levelId.Substring(6));
+        Debug.Log(levelId);
+        Debug.Log(levelIdNumber);
     }
 
     void Start() {
@@ -59,7 +63,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void StartLevel() {
-        dialogueManager.SetActiveDialogue(IngameDialogue.LEVEL_1_START);
+        dialogueManager.SetActiveDialogue(IngameDialogue.GetStartDialogue(levelIdNumber));
     }
 
     public void EndLevel() {
@@ -67,7 +71,7 @@ public class LevelManager : MonoBehaviour {
         SaveManager.GetInstance().GetCurrentSave().SetLevelCompleted(1);
         if(protocolCollected) SaveManager.GetInstance().GetCurrentSave().SetProtocolCollected(1);
         SaveManager.GetInstance().SaveCurrent();
-        dialogueManager.SetActiveDialogue(IngameDialogue.LEVEL_1_END);
+        dialogueManager.SetActiveDialogue(IngameDialogue.GetEndDialogue(levelIdNumber));
         StartCoroutine(DestroyDelayed(1f));
     }
 

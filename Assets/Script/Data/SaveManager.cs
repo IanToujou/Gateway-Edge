@@ -17,12 +17,17 @@ public class SaveManager {
                 saves[i-1] = new Save();
             }
         }
-        currentSave = 1;
+        currentSave = 1; 
     }
 
     public Save GetSave(int saveNumber) {
-        if(!IsSaveLoaded(saveNumber)) Load(saveNumber);
+
+        if(!IsSaveLoaded(saveNumber)) {
+            Load(saveNumber);
+        }
+
         return saves[saveNumber-1];
+
     }
 
     public Save GetCurrentSave() {
@@ -96,11 +101,6 @@ public class SaveManager {
         } else {
             return instance;
         }
-    }
-
-    public void TestButton() {
-        GetSave(1);
-        Save(1);
     }
 
     private static List<Save> CreateEmptySaveList() {
