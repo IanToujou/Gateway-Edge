@@ -107,8 +107,8 @@ public class PlayerController : MonoBehaviour {
             if(boostingPad) {
                 currentRotationSpeed = boostRotationSpeed;
                 camController.Shake(0.1f, 0.1f, 1f);
-                if(rb.velocity.magnitude <= minSpeed - 0.1f) {
-                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + acceleration * speedMultiplier * 30));
+                if(rb.velocity.magnitude <= maxSpeed - 0.1f) {
+                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + acceleration * speedMultiplier * 100));
                     speedMultiplier++;
                 }
                 return;

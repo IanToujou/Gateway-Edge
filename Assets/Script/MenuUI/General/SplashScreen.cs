@@ -7,13 +7,10 @@ public class SplashScreen : MonoBehaviour {
     
     private static bool hasStarted = false;
     private VideoPlayer player;
-    private UISoundManager soundManager;
 
     void Start() {
 
-        soundManager = UISoundManager.GetInstance();
         player = gameObject.GetComponent<VideoPlayer>();
-        StartCoroutine(PlaySoundDelayed());
 
         //Change the canvas alpha depending on the video start.
         if(hasStarted)
@@ -92,11 +89,6 @@ public class SplashScreen : MonoBehaviour {
         } else {
             Debug.LogWarning("VideoRenderMode (for alpha) must be RenderTexture, CameraFarPlane or CameraNearPlane. GameObject -> (" + player.gameObject.name + ")");
         }
-    }
-
-    public IEnumerator PlaySoundDelayed() {
-        yield return new WaitForSeconds(1.5f);
-        soundManager.PlayAudioClip(UISoundClipList.SFX_UI_NOTIFICATION, false);
     }
 
 }

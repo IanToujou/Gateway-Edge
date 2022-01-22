@@ -100,7 +100,34 @@ public class DialogueManager : MonoBehaviour {
         List<string> textList = new List<string>();
         SetPersonText("System");
 
-        if(dialogueId == -1) {
+        if(dialogueId == 10) {
+            
+            textList.Add("Hey! Are you awake?");
+            textList.Add("Hmm you do seem to be awake.");
+            textList.Add("You may ask yourself who I am, right? Just kidding, you are not capable of having thoughts or a voice like I do.");
+            textList.Add("I am the <color=aqua>SYSTEM</color>. I am the host of this world. You are one of my many workers.");
+            textList.Add("You need to complete tasks for this system. If you fail... I will need to take administrative actions and <color=red>eliminate you</color>.");
+            textList.Add("Your task here is to deliver a packet to the physical destination address <color=aqua>0x00034B8</color>, got it?");
+            textList.Add("Just follow the path and deliver it under the time limit. I disabled your controls for this straight section.");
+
+        } else if(dialogueId == 11) {
+
+            textList.Add("Well done! You successfully completed the tutorial. I hope you will not fail the next one.");
+            textList.Add("Alright... We will go to the <color=aqua>system overview</color>.");
+            textList.Add("CMD_GOTO_OVERVIEW");
+
+        } else if(dialogueId == 20) {
+
+            textList.Add("Hey, I got another task for you.");
+            textList.Add("This one is important, you can use a highspeed-bus for this task.");
+            textList.Add("There are boost pads on your way, make sure to catch them so you can accelerate.");
+
+        } else if(dialogueId == 21) {
+
+            textList.Add("Well done! I will take you to the <color=cyan>overview</color> again.");
+            textList.Add("CMD_GOTO_OVERVIEW");
+
+        } else if(dialogueId == -1) {
 
             textList.Add("Wait a moment... Do you see that curve in front of you?");
             textList.Add("Try to gain angular momentum by moving your mouse cursor on the screen.");
@@ -145,28 +172,6 @@ public class DialogueManager : MonoBehaviour {
 
             textList.Add("You are very close to the end! But pay attention, the passage is quite narrow.");
             textList.Add("You remember how to brake, do you? Brake with <color=yellow>(S)</color> to go inside the passage.");
-
-        } else if(dialogueId == 10) {
-            
-            textList.Add("Hey! Are you awake?");
-            textList.Add("Hmm you do seem to be awake.");
-            textList.Add("You may ask yourself who I am, right? Just kidding, you are not capable of having thoughts or a voice like I do.");
-            textList.Add("I am the <color=aqua>SYSTEM</color>. I am the host of this world. You are one of my many workers.");
-            textList.Add("You need to complete tasks for this system. If you fail... I will need to take administrative actions and <color=red>eliminate you</color>.");
-            textList.Add("Your task here is to deliver a packet to the physical destination address <color=aqua>0x00034B8</color>, got it?");
-            textList.Add("Just follow the path and deliver it under the time limit. I disabled your controls for this straight section.");
-
-        } else if(dialogueId == 11) {
-
-            textList.Add("Well done! You successfully completed the tutorial. I hope you will not fail the next one.");
-            textList.Add("Alright... We will go to the <color=aqua>system overview</color>.");
-            textList.Add("CMD_GOTO_OVERVIEW");
-
-        } else if(dialogueId == 20) {
-
-            textList.Add("Hey, I got another task for you.");
-            textList.Add("This one is important, you can use a highspeed-bus for this task.");
-            textList.Add("There are boost pads on your way, make sure to catch them so you can accelerate.");
 
         }
 

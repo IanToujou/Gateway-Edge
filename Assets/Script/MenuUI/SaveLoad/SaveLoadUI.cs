@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class SaveLoadUI : MonoBehaviour {
     
     [SerializeField] private GameObject loadButton;
-    [SerializeField] private List<GameObject> saves;
+    [SerializeField] private GameObject newGameButton;
+    [SerializeField] private GameObject continueGameButton;
     [SerializeField] private Image overlayPanel;
 
     private int selectedSave;
@@ -26,26 +27,29 @@ public class SaveLoadUI : MonoBehaviour {
     }
 
     void Start() {
-
-        for(int i = 1; i <= saves.Count; i++) {
-            GameObject currentSave = saves[i-1];
-            if(saveManager.GetSave(i).IsSaveActive()) {
-                currentSave.GetComponentInChildren<Text>().text = "Save " + i + ": Data Found";
-            } else {
-                currentSave.GetComponentInChildren<Text>().text = "Save " + i + ": No Data";
-            }
+        if(saveManager.GetSave().IsSaveActive()) {
+            continueGameButton.GetComponentInChildren<Text>().color = new Color(1, 1, 1, 1f);
+        } else {
+            continueGameButton.GetComponentInChildren<Text>().color = new Color(1, 1, 1, 0.3f);
         }
-
     }
 
     void Update() {
 
         if(selectedSave > 0) {
-            loadButtonText.color = new Color(255, 255, 255, 1);
+            loadButtonText.color = new Color(1, 1, 1, 1);
             loadActive = true;
         } else {
-            loadButtonText.color = new Color(255, 255, 255, 0.3f);
+            loadButtonText.color = new Color(1, 1, 1, 0.3f);
             loadActive = false;
+        }
+
+        if(selectedSave == 1) {
+            newGameButton.GetComponentInChildren<Text>().color = Color.cyan;
+            if(saveManager.GetSave().IsSaveActive()) continueGameButton.GetComponentInChildren<Text>().color = new Color(1f, 1f, 1f, 1f);
+        } else if(selectedSave == 2) {
+            if(saveManager.GetSave().IsSaveActive()) continueGameButton.GetComponentInChildren<Text>().color = Color.cyan;
+            newGameButton.GetComponentInChildren<Text>().color = new Color(1f, 1f, 1f, 1f);
         }
         
     }
@@ -53,6 +57,17 @@ public class SaveLoadUI : MonoBehaviour {
     public void ButtonPressBack() {
         UISoundManager.GetInstance().PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
         MenuUIManager.SetActiveCanvas(MenuUILayout.MENU);
+    }
+
+    public void ButtonPressNew() {
+        selectedSave = 1;
+        UISoundManager.GetInstance().PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
+    }
+
+    public void ButtonPressContinue() {
+        if(!saveManager.GetSave().IsSaveActive()) return;
+        selectedSave = 2;
+        UISoundManager.GetInstance().PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
     }
 
     public void ButtonPressLoad() {
@@ -64,21 +79,6 @@ public class SaveLoadUI : MonoBehaviour {
 
     }
 
-    public void SelectSave(int saveNumber) {
-
-        selectedSave = saveNumber;
-
-        foreach(GameObject allSaves in saves) {
-            allSaves.GetComponentInChildren<Text>().color = Color.white;
-        }
-
-        GameObject currentSave = saves[saveNumber-1];
-        Text currentSaveText = currentSave.GetComponentInChildren<Text>();
-        currentSaveText.color = Color.cyan;
-        UISoundManager.GetInstance().PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
-        
-    }
-
     private IEnumerator FadeOverlay() {
 
         for (float i = 0; i <= 1; i += Time.deltaTime) {
@@ -88,8 +88,7 @@ public class SaveLoadUI : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
 
-        if(saveManager.GetSave(selectedSave).IsSaveActive()) {
-            saveManager.Load(selectedSave);
+        if(selectedSave == 2) {
             SceneManager.LoadScene("SceneLevelSelection");
         } else {
             SceneManager.LoadScene("SceneEntry");

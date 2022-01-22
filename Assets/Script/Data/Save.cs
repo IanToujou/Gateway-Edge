@@ -2,8 +2,7 @@ using System.Collections.Generic;
 
 [System.Serializable]
 public class Save {
-    
-    private bool saveActive;
+
     private int fragments;
     private List<int> completedLevels;
     private List<int> collectedProtocols;
@@ -15,11 +14,7 @@ public class Save {
     }
 
     public bool IsSaveActive() {
-        return saveActive;
-    }
-
-    public void SetSaveActive(bool saveActive) {
-        this.saveActive = saveActive;
+        return completedLevels.Count > 0;
     }
 
     public int GetFragments() {

@@ -33,8 +33,7 @@ public class LevelManager : MonoBehaviour {
         timerTime = timeLimit;
         protocolCollected = false;
         levelIdNumber = Int32.Parse(levelId.Substring(6));
-        Debug.Log(levelId);
-        Debug.Log(levelIdNumber);
+        if(levelIdNumber == 1) player.GetComponent<PlayerController>().SetFreezed(true);
     }
 
     void Start() {
@@ -67,10 +66,11 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void EndLevel() {
-        SaveManager.GetInstance().GetCurrentSave().AddFragments(fragments);
-        SaveManager.GetInstance().GetCurrentSave().SetLevelCompleted(1);
-        if(protocolCollected) SaveManager.GetInstance().GetCurrentSave().SetProtocolCollected(1);
-        SaveManager.GetInstance().SaveCurrent();
+        Debug.Log("Saved completion of level " + levelIdNumber + " to the current save file.");
+        SaveManager.GetInstance().GetSave().AddFragments(fragments);
+        SaveManager.GetInstance().GetSave().SetLevelCompleted(levelIdNumber);
+        if(protocolCollected) SaveManager.GetInstance().GetSave().SetProtocolCollected(levelIdNumber);
+        SaveManager.GetInstance().Save();
         dialogueManager.SetActiveDialogue(IngameDialogue.GetEndDialogue(levelIdNumber));
         StartCoroutine(DestroyDelayed(1f));
     }

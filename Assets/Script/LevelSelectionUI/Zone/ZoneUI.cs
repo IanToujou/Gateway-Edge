@@ -22,7 +22,7 @@ public class ZoneUI : MonoBehaviour {
 
         for(int i = 1; i <= levelButtons.Count; i++) {
             levelButtons[i-1].GetComponentInChildren<Text>().text = "Level - " + zoneNumber + "." + i;
-            if(saveManager.GetCurrentSave().IsLevelCompleted((zoneNumber-1)*6 + i)) {
+            if(saveManager.GetSave().IsLevelCompleted((zoneNumber-1)*6 + i)) {
                 levelButtons[i-1].GetComponentInChildren<Text>().color = new Color(0, 1, 0, 1);
                 levelButtons[i].GetComponentInChildren<Text>().color = new Color(1f, 1f, 0, 1);
                 i++;
@@ -53,7 +53,7 @@ public class ZoneUI : MonoBehaviour {
     }
 
     public void ButtonPressLevel(int levelNumber) {
-        if(SaveManager.GetInstance().GetCurrentSave().IsLevelCompleted(levelNumber-1)) {
+        if(SaveManager.GetInstance().GetSave().IsLevelCompleted(levelNumber-1)) {
             LevelManager.LoadLevel("Level_" + levelNumber);
         }
     }
