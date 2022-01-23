@@ -1473,6 +1473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d464e7f6f5a40429a573fd49fa3758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 1542494447}
   levelId: Level_3
   fragmentText: {fileID: 1184729357}
   playerHealthText: {fileID: 18632531}

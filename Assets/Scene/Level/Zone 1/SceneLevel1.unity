@@ -3483,14 +3483,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d464e7f6f5a40429a573fd49fa3758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 1542494447}
   levelId: Level_1
   fragmentText: {fileID: 1184729357}
   playerHealthText: {fileID: 18632531}
   timerText: {fileID: 119013951}
   protocolText: {fileID: 1762873163}
+  lapText: {fileID: 0}
   dialogueManager: {fileID: 1737383876}
   deathPanel: {fileID: 1087599963}
   timeLimit: 120
+  laps: 0
 --- !u!1001 &112702049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54013,7 +54016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 485da6c5f413fa94093129ce447f6e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 1834969221}
 --- !u!43 &1190917673
 Mesh:
   m_ObjectHideFlags: 0
@@ -68850,6 +68852,8 @@ MonoBehaviour:
   - {fileID: 1958094286}
   - {fileID: 1523130291}
   - {fileID: 58739615}
+  playerController: {fileID: 1542494447}
+  levelManager: {fileID: 107966946}
 --- !u!4 &1745898999
 Transform:
   m_ObjectHideFlags: 0
@@ -73002,7 +73006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920774551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.22, y: -4.5, z: 3.1}
+  m_LocalPosition: {x: 16.24, y: -4.5, z: 3.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1183959748}

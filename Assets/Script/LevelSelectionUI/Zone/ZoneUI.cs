@@ -11,31 +11,30 @@ public class ZoneUI : MonoBehaviour {
     private ParticleSystem particles;
     private ParticleSystem.MainModule particleMainModule;
     private List<int> allowedToEnter = new List<int>();
-    private UISoundManager soundManager;
+    private SaveManager saveManager;
 
     void Start() {
 
-        SaveManager saveManager = SaveManager.GetInstance();
-        //soundManager = UISoundManager.GetInstance();
+        saveManager = SaveManager.GetInstance();
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         particles = GameObject.Find("BackgroundParticles").GetComponent<ParticleSystem>();
         particleMainModule = particles.main;
         particles.Clear();
 
-        Debug.Log("Completed levels: ");
-        foreach(int level in saveManager.GetSave().GetCompletedLevels()) {
-            Debug.Log(level);
-        }
+        for(int i = 0; i < levelButtons.Count; i++) {
 
-        for(int i = 1; i <= levelButtons.Count; i++) {
-            levelButtons[i-1].GetComponentInChildren<Text>().text = "Level - " + zoneNumber + "." + i;
-            if(saveManager.GetSave().IsLevelCompleted((zoneNumber-1)*6 + i)) {
-                levelButtons[i-1].GetComponentInChildren<Text>().color = new Color(0, 1, 0, 1);
-                levelButtons[i].GetComponentInChildren<Text>().color = new Color(1f, 1f, 0, 1);
-                i++;
+            levelButtons[i].GetComponentInChildren<Text>().text = "Level - " + zoneNumber + "." + (i+1);
+
+            if(saveManager.GetSave().IsLevelCompleted((zoneNumber-1)*3 + (i+1))) {
+                levelButtons[i].GetComponentInChildren<Text>().color = new Color(0f, 1f, 0f, 1f);
             } else {
-                levelButtons[i-1].GetComponentInChildren<Text>().color = new Color(0.2f, 0.2f, 0.2f, 1);
+                if(saveManager.GetSave().IsLevelCompleted((zoneNumber-1)*3 + (i))) {
+                    levelButtons[i].GetComponentInChildren<Text>().color = new Color(1f, 1f, 0f, 1f);
+                } else {
+                    levelButtons[i].GetComponentInChildren<Text>().color = new Color(0.2f, 0.2f, 0.2f, 1f);
+                }
             }
+
         }
 
     }
@@ -60,8 +59,8 @@ public class ZoneUI : MonoBehaviour {
     }
 
     public void ButtonPressLevel(int levelNumber) {
-        if(SaveManager.GetInstance().GetSave().IsLevelCompleted(levelNumber-1)) {
-            //soundManager.PlayAudioClip(UISoundClipList.SFX_UI_NOTIFICATION);
+        if(SaveManager.GetInstance().GetSave().IsLevelCompleted(levelNumber-1) || SaveManager.GetInstance().GetSave().IsLevelCompleted(levelNumber)) {
+            UISoundManager.GetInstance().PlayAudioClip(UISoundClipList.SFX_UI_NOTIFICATION);
             LevelManager.LoadLevel("Level_" + levelNumber);
         }
     }

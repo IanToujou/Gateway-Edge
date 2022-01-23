@@ -4,16 +4,10 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour {
     
     [SerializeField] private List<GameObject> zones = new List<GameObject>();
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private LevelManager levelManager;
 
-    private LevelManager levelManager;
-    private PlayerController playerController;
     private int state;
-
-    void Start() {
-        state = 0;
-        levelManager = LevelManager.GetCurrentManager();
-        playerController = levelManager.GetPlayer().GetComponent<PlayerController>();
-    }
 
     void Update() {
 

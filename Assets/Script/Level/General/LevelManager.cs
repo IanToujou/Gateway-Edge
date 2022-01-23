@@ -6,6 +6,7 @@ using System;
 
 public class LevelManager : MonoBehaviour {
     
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private string levelId;
     [SerializeField] private Text fragmentText;
     [SerializeField] private Text playerHealthText;
@@ -37,7 +38,7 @@ public class LevelManager : MonoBehaviour {
         timerTime = timeLimit;
         protocolCollected = false;
         levelIdNumber = Int32.Parse(levelId.Substring(6));
-        if(levelIdNumber == 1) player.GetComponent<PlayerController>().SetFreezed(true);
+        if(levelIdNumber == 1) playerController.SetFreezed(true);
     }
 
     void Start() {
@@ -47,7 +48,7 @@ public class LevelManager : MonoBehaviour {
     void Update() {
 
         fragmentText.text = "" + fragments;
-        playerHealthText.text = "" + GetPlayerController().GetPlayerHealth();
+        playerHealthText.text = "" + playerController.GetPlayerHealth();
         if(protocolCollected) protocolText.color = new Color(0, 255, 0, 1);
         if(laps != 0) lapText.text = "Lap 000" + currentLap;
 
@@ -60,7 +61,7 @@ public class LevelManager : MonoBehaviour {
 
             if(timerTime <= 0.1f) {
                 StopTimer();
-                player.GetComponent<PlayerController>().DieInstantly();
+                playerController.DieInstantly();
             }
 
         }
@@ -165,7 +166,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     public PlayerController GetPlayerController() {
-        return player.GetComponent<PlayerController>();
+        return playerController;
     }
 
     public bool IsTimerActive() {

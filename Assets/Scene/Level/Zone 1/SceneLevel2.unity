@@ -3112,14 +3112,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d464e7f6f5a40429a573fd49fa3758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 1542494447}
   levelId: Level_2
   fragmentText: {fileID: 1184729357}
   playerHealthText: {fileID: 18632531}
   timerText: {fileID: 119013951}
   protocolText: {fileID: 1762873163}
+  lapText: {fileID: 0}
   dialogueManager: {fileID: 1737383876}
   deathPanel: {fileID: 1087599963}
   timeLimit: 50
+  laps: 0
 --- !u!43 &108489465
 Mesh:
   m_ObjectHideFlags: 0
