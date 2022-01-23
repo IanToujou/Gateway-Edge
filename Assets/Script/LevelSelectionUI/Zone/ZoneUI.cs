@@ -16,6 +16,7 @@ public class ZoneUI : MonoBehaviour {
     void Start() {
 
         saveManager = SaveManager.GetInstance();
+        Save save = saveManager.GetSave();
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         particles = GameObject.Find("BackgroundParticles").GetComponent<ParticleSystem>();
         particleMainModule = particles.main;
@@ -23,12 +24,21 @@ public class ZoneUI : MonoBehaviour {
 
         for(int i = 0; i < levelButtons.Count; i++) {
 
+            int currentLevel = (zoneNumber-1)*3 + (i+1);
             levelButtons[i].GetComponentInChildren<Text>().text = "Level - " + zoneNumber + "." + (i+1);
 
-            if(saveManager.GetSave().IsLevelCompleted((zoneNumber-1)*3 + (i+1))) {
+            if(save.IsLevelCompleted(currentLevel)) {
                 levelButtons[i].GetComponentInChildren<Text>().color = new Color(0f, 1f, 0f, 1f);
+                levelButtons[i].GetComponentsInChildren<Text>()[1].color = new Color(0f, 1f, 1f, 1f);
+                if(save.IsProtocolCollected(currentLevel)) {
+                    levelButtons[i].GetComponentsInChildren<Image>()[1].color = new Color(1f, 0.5f, 0f, 1f);
+                } else {
+                    levelButtons[i].GetComponentsInChildren<Image>()[1].color = new Color(0.2f, 0.2f, 0.2f, 1f);
+                }
             } else {
-                if(saveManager.GetSave().IsLevelCompleted((zoneNumber-1)*3 + (i))) {
+                levelButtons[i].GetComponentsInChildren<Text>()[1].color = new Color(0.2f, 0.2f, 0.2f, 1f);
+                levelButtons[i].GetComponentsInChildren<Image>()[1].color = new Color(0.2f, 0.2f, 0.2f, 1f);
+                if(save.IsLevelCompleted(currentLevel-1)) {
                     levelButtons[i].GetComponentInChildren<Text>().color = new Color(1f, 1f, 0f, 1f);
                 } else {
                     levelButtons[i].GetComponentInChildren<Text>().color = new Color(0.2f, 0.2f, 0.2f, 1f);
