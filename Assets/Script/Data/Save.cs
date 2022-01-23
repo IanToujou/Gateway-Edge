@@ -6,11 +6,13 @@ public class Save {
     private int fragments;
     private List<int> completedLevels;
     private List<int> collectedProtocols;
+    private Dictionary<int, float> completionTimes;
 
     public Save() {
         fragments = 0;
         completedLevels = new List<int>();
         collectedProtocols = new List<int>();
+        completionTimes = new Dictionary<int, float>();
     }
 
     public bool IsSaveActive() {
@@ -55,6 +57,25 @@ public class Save {
 
     public void SetProtocolCollected(int levelId) {
         if(!IsProtocolCollected(levelId)) collectedProtocols.Add(levelId);
+    }
+
+    public float GetCompletionTime(int levelId) {
+        if(completionTimes.ContainsKey(levelId))
+        return completionTimes[levelId];
+        else return 0f;
+    }
+
+    public void SetCompletionTime(int levelId, float completionTime) {
+        if(completionTimes.ContainsKey(levelId)) completionTimes.Remove(levelId);
+        completionTimes.Add(levelId, completionTime);
+    }
+
+    public Dictionary<int, float> GetCompletionTimes() {
+        return completionTimes;
+    }
+
+    public void GetCompletionTimes(Dictionary<int, float> completionTimes) {
+        this.completionTimes = completionTimes;
     }
 
 }

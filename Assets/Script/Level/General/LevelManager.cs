@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour {
         fragmentText.text = "" + fragments;
         playerHealthText.text = "" + playerController.GetPlayerHealth();
         if(protocolCollected) protocolText.color = new Color(0, 255, 0, 1);
-        if(laps != 0) lapText.text = "Lap 000" + currentLap;
+        if(laps != 0) lapText.text = "Lap 0x0" + currentLap;
 
         if(timerActive) {
 
@@ -81,6 +81,7 @@ public class LevelManager : MonoBehaviour {
         SaveManager.GetInstance().GetSave().AddFragments(fragments);
         SaveManager.GetInstance().GetSave().SetLevelCompleted(levelIdNumber);
         if(protocolCollected) SaveManager.GetInstance().GetSave().SetProtocolCollected(levelIdNumber);
+        SaveManager.GetInstance().GetSave().SetCompletionTime(levelIdNumber, Mathf.Abs(timeLimit - timerTime));
         SaveManager.GetInstance().Save();
         dialogueManager.SetActiveDialogue(IngameDialogue.GetEndDialogue(levelIdNumber));
         StartCoroutine(DestroyDelayed(1f));

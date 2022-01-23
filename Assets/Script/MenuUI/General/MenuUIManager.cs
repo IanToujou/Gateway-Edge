@@ -10,16 +10,18 @@ public class MenuUIManager : MonoBehaviour{
     [SerializeField] private GameObject saveLoadUI;
     [SerializeField] private GameObject settingsUI;
     
-    private static List<GameObject> uiList = new List<GameObject>();
+    private static List<GameObject> uiList;
     
 
-    void Awake() {
+    void Start() {
+        uiList = new List<GameObject>();
         uiList.Add(bootUI);
         uiList.Add(titleUI);
         uiList.Add(menuUI);
         uiList.Add(exitConfirmationUI);
         uiList.Add(saveLoadUI);
         uiList.Add(settingsUI);
+        DeactivateAllCanvas();
     }
 
     public static void SetActiveCanvas(int layout) {

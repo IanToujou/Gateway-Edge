@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,6 +29,10 @@ public class ZoneUI : MonoBehaviour {
             int currentLevel = (zoneNumber-1)*3 + (i+1);
             levelButtons[i].GetComponentInChildren<Text>().text = "Level - " + zoneNumber + "." + (i+1);
 
+            TimeSpan t = TimeSpan.FromSeconds(save.GetCompletionTime(currentLevel));
+            string answer = string.Format("{0:D2}:{1:D2}:{2:D3}", t.Minutes, t.Seconds, t.Milliseconds);
+            levelButtons[i].GetComponentsInChildren<Text>()[1].text = answer;
+
             if(save.IsLevelCompleted(currentLevel)) {
                 levelButtons[i].GetComponentInChildren<Text>().color = new Color(0f, 1f, 0f, 1f);
                 levelButtons[i].GetComponentsInChildren<Text>()[1].color = new Color(0f, 1f, 1f, 1f);
@@ -39,7 +44,7 @@ public class ZoneUI : MonoBehaviour {
             } else {
                 levelButtons[i].GetComponentsInChildren<Text>()[1].color = new Color(0.2f, 0.2f, 0.2f, 1f);
                 levelButtons[i].GetComponentsInChildren<Image>()[1].color = new Color(0.2f, 0.2f, 0.2f, 1f);
-                if(save.IsLevelCompleted(currentLevel-1)) {
+                if(save.IsLevelCompleted(currentLevel-1) || currentLevel == 1) {
                     levelButtons[i].GetComponentInChildren<Text>().color = new Color(1f, 1f, 0f, 1f);
                 } else {
                     levelButtons[i].GetComponentInChildren<Text>().color = new Color(0.2f, 0.2f, 0.2f, 1f);
@@ -72,7 +77,7 @@ public class ZoneUI : MonoBehaviour {
     }
 
     public void ButtonPressLevel(int levelNumber) {
-        if(SaveManager.GetInstance().GetSave().IsLevelCompleted(levelNumber-1) || SaveManager.GetInstance().GetSave().IsLevelCompleted(levelNumber)) {
+        if(SaveManager.GetInstance().GetSave().IsLevelCompleted(levelNumber-1) || SaveManager.GetInstance().GetSave().IsLevelCompleted(levelNumber) || levelNumber == 1) {
             UISoundManager.GetInstance().PlayAudioClip(UISoundClipList.SFX_UI_NOTIFICATION);
             LevelManager.LoadLevel("Level_" + levelNumber);
         }

@@ -19,7 +19,6 @@ public class LevelSelectionUIManager : MonoBehaviour {
         uiList.Add(zoneFourUI);
         uiList.Add(exitConfirmationUI);
         SetActiveCanvas(LevelSelectionUILayout.ZONE_1);
-        Debug.Log(uiList.Count);
     }
 
     public static void SetActiveCanvas(int layout) {
