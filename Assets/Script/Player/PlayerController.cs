@@ -209,6 +209,11 @@ public class PlayerController : MonoBehaviour {
         
     }
 
+    public void DieInstantly() {
+        LevelManager.GetCurrentManager().PlayerDeath();
+        dead = true;
+    }
+
     public IEnumerator TakeDamage() {
 
         camController.Shake(3f, 0.2f, 1f);

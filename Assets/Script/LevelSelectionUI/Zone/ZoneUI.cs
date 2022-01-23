@@ -11,14 +11,21 @@ public class ZoneUI : MonoBehaviour {
     private ParticleSystem particles;
     private ParticleSystem.MainModule particleMainModule;
     private List<int> allowedToEnter = new List<int>();
+    private UISoundManager soundManager;
 
     void Start() {
 
         SaveManager saveManager = SaveManager.GetInstance();
+        //soundManager = UISoundManager.GetInstance();
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         particles = GameObject.Find("BackgroundParticles").GetComponent<ParticleSystem>();
         particleMainModule = particles.main;
         particles.Clear();
+
+        Debug.Log("Completed levels: ");
+        foreach(int level in saveManager.GetSave().GetCompletedLevels()) {
+            Debug.Log(level);
+        }
 
         for(int i = 1; i <= levelButtons.Count; i++) {
             levelButtons[i-1].GetComponentInChildren<Text>().text = "Level - " + zoneNumber + "." + i;
@@ -54,6 +61,7 @@ public class ZoneUI : MonoBehaviour {
 
     public void ButtonPressLevel(int levelNumber) {
         if(SaveManager.GetInstance().GetSave().IsLevelCompleted(levelNumber-1)) {
+            //soundManager.PlayAudioClip(UISoundClipList.SFX_UI_NOTIFICATION);
             LevelManager.LoadLevel("Level_" + levelNumber);
         }
     }

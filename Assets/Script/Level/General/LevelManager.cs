@@ -11,9 +11,11 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] private Text playerHealthText;
     [SerializeField] private Text timerText;
     [SerializeField] private Text protocolText;
+    [SerializeField] private Text lapText;
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private DeathPanel deathPanel;
     [SerializeField] private float timeLimit;
+    [SerializeField] private int laps;
 
     private static LevelManager instance;
     private GameObject player;
@@ -23,8 +25,10 @@ public class LevelManager : MonoBehaviour {
     private float timerTime;
     private bool protocolCollected;
     private int levelIdNumber;
+    private int currentLap;
 
     void Awake() {
+        currentLap = 1;
         instance = this;
         fragments = 0;
         teleporterActive = true;
@@ -45,6 +49,7 @@ public class LevelManager : MonoBehaviour {
         fragmentText.text = "" + fragments;
         playerHealthText.text = "" + GetPlayerController().GetPlayerHealth();
         if(protocolCollected) protocolText.color = new Color(0, 255, 0, 1);
+        if(laps != 0) lapText.text = "Lap 000" + currentLap;
 
         if(timerActive) {
 
@@ -53,8 +58,9 @@ public class LevelManager : MonoBehaviour {
             string answer = string.Format("{0:D2}:{1:D2}:{2:D3}", t.Minutes, t.Seconds, t.Milliseconds);
             timerText.text = answer;
 
-            if(timerTime <= 0.0f) {
+            if(timerTime <= 0.1f) {
                 StopTimer();
+                player.GetComponent<PlayerController>().DieInstantly();
             }
 
         }
@@ -66,6 +72,10 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void EndLevel() {
+        if(currentLap < laps) {
+            currentLap++;
+            return;
+        }
         Debug.Log("Saved completion of level " + levelIdNumber + " to the current save file.");
         SaveManager.GetInstance().GetSave().AddFragments(fragments);
         SaveManager.GetInstance().GetSave().SetLevelCompleted(levelIdNumber);

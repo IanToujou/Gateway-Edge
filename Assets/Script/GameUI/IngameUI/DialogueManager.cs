@@ -118,19 +118,31 @@ public class DialogueManager : MonoBehaviour {
 
         } else if(dialogueId == 20) {
 
-            textList.Add("Hey, I got another task for you.");
+            textList.Add("Hey, I got another task for you. You need to deliver a firewall ruleset update.");
             textList.Add("This one is important, you can use a highspeed-bus for this task.");
             textList.Add("There are boost pads on your way, make sure to catch them so you can accelerate.");
+            textList.Add("And... Do not crash into the walls while using these pads. Good luck.");
 
         } else if(dialogueId == 21) {
 
             textList.Add("Well done! I will take you to the <color=cyan>overview</color> again.");
             textList.Add("CMD_GOTO_OVERVIEW");
 
+        } else if(dialogueId == 30) {
+
+            textList.Add("Okay, you know what? You need to deliver multiple packets to the same location.");
+            textList.Add("In other words, you need to take mutiple laps.");
+            textList.Add("You will also have more time to complete this. Now, good luck.");
+
+        } else if(dialogueId == 31) {
+
+            textList.Add("Good job. The destination received the packet successfully.");
+            textList.Add("CMD_GOTO_OVERVIEW");
+
         } else if(dialogueId == -1) {
 
             textList.Add("Wait a moment... Do you see that curve in front of you?");
-            textList.Add("Try to gain angular momentum by moving your mouse cursor on the screen.");
+            textList.Add("Try to gain angular velocity by moving your mouse cursor on the screen.");
             textList.Add("You should be able to make this curve without any problems.");
 
         } else if(dialogueId == -2) {
