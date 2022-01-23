@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ZoneUI : MonoBehaviour {
 
     [SerializeField] private int zoneNumber;
+    [SerializeField] private Text fragmentText;
     [SerializeField] private List<GameObject> levelButtons = new List<GameObject>();
 
     private Camera playerCamera;
@@ -46,6 +47,8 @@ public class ZoneUI : MonoBehaviour {
             }
 
         }
+
+        fragmentText.text = "" + save.GetFragments();
 
     }
 
