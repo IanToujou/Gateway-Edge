@@ -14,7 +14,7 @@ public class ItemTimer : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider) {
         if(collider.CompareTag("Player")) {
-            manager.AddTime(5);
+            manager.CollectTimer();
             Destroy(gameObject);
         }
     }

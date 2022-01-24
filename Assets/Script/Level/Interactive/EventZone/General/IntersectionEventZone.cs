@@ -16,7 +16,7 @@ public class IntersectionEventZone : MonoBehaviour {
         }
     }
 
-    private void SetState(int state) {
+    public void SetState(int state) {
         if(state == 1) {
             foreach(GameObject gameObject in secondState) {
                 gameObject.SetActive(false);

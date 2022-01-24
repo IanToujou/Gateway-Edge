@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,7 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] private DeathPanel deathPanel;
     [SerializeField] private float timeLimit;
     [SerializeField] private int laps;
+    [SerializeField] private List<IntersectionEventZone> intersectionZones;
 
     private static LevelManager instance;
     private GameObject player;
@@ -27,6 +29,7 @@ public class LevelManager : MonoBehaviour {
     private bool protocolCollected;
     private int levelIdNumber;
     private int currentLap;
+    private int timerCollected;
 
     void Awake() {
         currentLap = 1;
@@ -37,6 +40,7 @@ public class LevelManager : MonoBehaviour {
         timerActive = false;
         timerTime = timeLimit;
         protocolCollected = false;
+        timerCollected = 0;
         levelIdNumber = Int32.Parse(levelId.Substring(6));
         if(levelIdNumber == 1) playerController.SetFreezed(true);
     }
@@ -75,13 +79,16 @@ public class LevelManager : MonoBehaviour {
     public void EndLevel() {
         if(currentLap < laps) {
             currentLap++;
+            foreach(IntersectionEventZone zones in intersectionZones) {
+                zones.SetState(1);
+            }
             return;
         }
         Debug.Log("Saved completion of level " + levelIdNumber + " to the current save file.");
         SaveManager.GetInstance().GetSave().AddFragments(fragments);
         SaveManager.GetInstance().GetSave().SetLevelCompleted(levelIdNumber);
         if(protocolCollected) SaveManager.GetInstance().GetSave().SetProtocolCollected(levelIdNumber);
-        SaveManager.GetInstance().GetSave().SetCompletionTime(levelIdNumber, Mathf.Abs(timeLimit - timerTime));
+        SaveManager.GetInstance().GetSave().SetCompletionTime(levelIdNumber, Mathf.Abs(timeLimit - (timerTime-timerCollected*5)));
         SaveManager.GetInstance().Save();
         dialogueManager.SetActiveDialogue(IngameDialogue.GetEndDialogue(levelIdNumber));
         StartCoroutine(DestroyDelayed(1f));
@@ -101,6 +108,11 @@ public class LevelManager : MonoBehaviour {
 
     public void StartTimer() {
         SetTimerActive(true);
+    }
+
+    public void CollectTimer() {
+        timerTime += 5;
+        timerCollected += 1;
     }
 
     public void AddTime(int amount) {
