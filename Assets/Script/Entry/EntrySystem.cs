@@ -148,7 +148,7 @@ public class EntrySystem : MonoBehaviour {
 
         overlayPanel.gameObject.SetActive(true);
         StartCoroutine(FadeOverlay());
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3f);
         currentState = EntryCutscene.EXIT;
 
     }
