@@ -88,7 +88,7 @@ public class LevelManager : MonoBehaviour {
         SaveManager.GetInstance().GetSave().AddFragments(fragments);
         SaveManager.GetInstance().GetSave().SetLevelCompleted(levelIdNumber);
         if(protocolCollected) SaveManager.GetInstance().GetSave().SetProtocolCollected(levelIdNumber);
-        SaveManager.GetInstance().GetSave().SetCompletionTime(levelIdNumber, Mathf.Abs(timeLimit - (timerTime-timerCollected*5)));
+        SaveManager.GetInstance().GetSave().SetCompletionTime(levelIdNumber, Mathf.Abs((timerTime-timerCollected*5) - timeLimit));
         SaveManager.GetInstance().Save();
         dialogueManager.SetActiveDialogue(IngameDialogue.GetEndDialogue(levelIdNumber));
         StartCoroutine(DestroyDelayed(1f));
