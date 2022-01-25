@@ -9,11 +9,12 @@ public class MenuUIManager : MonoBehaviour{
     [SerializeField] private GameObject exitConfirmationUI;
     [SerializeField] private GameObject saveLoadUI;
     [SerializeField] private GameObject settingsUI;
+    [SerializeField] private GameObject musicUI;
+    [SerializeField] private GameObject creditsUI;
     
     private static List<GameObject> uiList;
     
-
-    void Start() {
+    void OnEnable() {
         uiList = new List<GameObject>();
         uiList.Add(bootUI);
         uiList.Add(titleUI);
@@ -21,6 +22,8 @@ public class MenuUIManager : MonoBehaviour{
         uiList.Add(exitConfirmationUI);
         uiList.Add(saveLoadUI);
         uiList.Add(settingsUI);
+        uiList.Add(musicUI);
+        uiList.Add(creditsUI);
         DeactivateAllCanvas();
     }
 

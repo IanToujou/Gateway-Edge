@@ -26,6 +26,12 @@ public class SaveLoadUI : MonoBehaviour {
         soundManager = UISoundManager.GetInstance();
     }
 
+    void OnEnable() {
+        foreach(Button all in GetComponentsInChildren<Button>()) {
+            all.GetComponentInChildren<Text>().color = Color.white;
+        }
+    }
+
     void Start() {
         if(saveManager.GetSave().IsSaveActive()) {
             continueGameButton.GetComponentInChildren<Text>().color = new Color(1, 1, 1, 1f);

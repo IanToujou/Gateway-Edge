@@ -1,13 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsUI : MonoBehaviour {
-
-    private UISoundManager soundManager;
-
-    void Awake() {
-        soundManager = UISoundManager.GetInstance();
-    }
+public class CreditsUI : MonoBehaviour {
 
     void OnEnable() {
         foreach(Button all in GetComponentsInChildren<Button>()) {
@@ -16,7 +10,7 @@ public class SettingsUI : MonoBehaviour {
     }
 
     public void ButtonPressBack() {
-        soundManager.PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
+        UISoundManager.GetInstance().PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
         MenuUIManager.SetActiveCanvas(MenuUILayout.MENU);
     }
 

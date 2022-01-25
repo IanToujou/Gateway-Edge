@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuUI : MonoBehaviour {
 
@@ -6,6 +8,12 @@ public class MenuUI : MonoBehaviour {
 
     void Awake() {
         soundManager = UISoundManager.GetInstance();
+    }
+
+    void OnEnable() {
+        foreach(Button all in GetComponentsInChildren<Button>()) {
+            all.GetComponentInChildren<Text>().color = Color.white;
+        }
     }
 
     public void ButtonPressStart() {
@@ -21,6 +29,16 @@ public class MenuUI : MonoBehaviour {
     public void ButtonPressExit() {
         soundManager.PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
         MenuUIManager.SetActiveCanvas(MenuUILayout.EXIT_CONFIRMATION);
+    }
+
+    public void ButtonPressMusic() {
+        soundManager.PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
+        MenuUIManager.SetActiveCanvas(MenuUILayout.MUSIC);
+    }
+
+    public void ButtonPressCredits() {
+        soundManager.PlayAudioClip(UISoundClipList.SFX_UI_CLICK);
+        MenuUIManager.SetActiveCanvas(MenuUILayout.CREDITS);
     }
 
 }

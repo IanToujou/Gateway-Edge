@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExitConfirmationUI : MonoBehaviour {
 
@@ -6,6 +7,12 @@ public class ExitConfirmationUI : MonoBehaviour {
 
     void Awake() {
         soundManager = UISoundManager.GetInstance();
+    }
+
+    void OnEnable() {
+        foreach(Button all in GetComponentsInChildren<Button>()) {
+            all.GetComponentInChildren<Text>().color = Color.white;
+        }
     }
 
     public void ButtonPressYes() {
