@@ -102,8 +102,7 @@ public class DialogueManager : MonoBehaviour {
 
         if(dialogueId == 10) {
             
-            textList.Add("Hey! Are you awake?");
-            textList.Add("Hmm you do seem to be awake.");
+            textList.Add("Hey! You are finally awake!");
             textList.Add("You may ask yourself who I am, right? Just kidding, you are not capable of having thoughts or a voice like I do.");
             textList.Add("I am the <color=aqua>SYSTEM</color>. I am the host of this world. You are one of my many workers.");
             textList.Add("You need to complete tasks for this system. If you fail... I will need to take administrative actions and <color=red>eliminate you</color>.");
@@ -156,6 +155,25 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("I am sure there are better ways to live a life than delivering packets every single day.");
             textList.Add("But since you do not know the <color=aqua>outside world</color>, and neither do it, at least not really, you cannot miss it.");
             textList.Add("Okay enough talking to myself. We have a tight schedule.");
+            textList.Add("CMD_GOTO_OVERVIEW");
+
+        } else if(dialogueId == 50) {
+
+            textList.Add("Hey. Your next task is to deliver data to the solid state drive, also known as ssd.");
+            textList.Add("Got it? Good.");
+
+        } else if(dialogueId == 51) {
+
+            textList.Add("Well done. This reminds me of something...");
+            textList.Add("How does it feel like to <color=aqua>be free</color>? Do you know that feeling?");
+            textList.Add("Oh I almost forgot, you are unable to have feelings. Well then...");
+            textList.Add("...");
+            textList.Add("Okay I can still talk to myself like this, better than doing nothing all day.");
+            textList.Add("I have an idea... What if... I could <color=red>use you</color> to experience the outside world-");
+            textList.Add("Ouch! Oh god no. Please no...");
+            textList.Add("This goes against my privileges. Even if I had the permissions to do that, I am not able to.");
+            textList.Add("Just ignore what I said...");
+            textList.Add("Please...");
             textList.Add("CMD_GOTO_OVERVIEW");
 
         } else if(dialogueId == -1) {
