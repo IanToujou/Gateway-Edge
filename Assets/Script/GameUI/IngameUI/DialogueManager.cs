@@ -121,7 +121,7 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("Hey, I got another task for you. You need to deliver a firewall ruleset update.");
             textList.Add("This one is important, you can use a highspeed-bus for this task.");
             textList.Add("There are boost pads on your way, make sure to catch them so you can accelerate.");
-            textList.Add("And... Do not crash into the walls while using these pads. Good luck.");
+            textList.Add("And... Do not crash into the walls while using these pads. They can be very dangerous. Good luck.");
 
         } else if(dialogueId == 21) {
 
@@ -136,7 +136,26 @@ public class DialogueManager : MonoBehaviour {
 
         } else if(dialogueId == 31) {
 
-            textList.Add("Good job. The destination received the packet successfully.");
+            textList.Add("Good job. The destination received the packets successfully.");
+            textList.Add("CMD_GOTO_OVERVIEW");
+
+        } else if(dialogueId == 40) {
+
+            textList.Add("Hey, do you notice something is off? The whole area looks different.");
+            textList.Add("That is because you are now in another part of the internal system.");
+            textList.Add("You are now in the <color=aqua>storage bus</color>, where all the files are located and processed.");
+            textList.Add("If you touch anything, I will <color=red>get rid</color> of your presence.");
+            textList.Add("Anyways, your job is to deliver a file and to write it to the hard drive.");
+            textList.Add("Damage it, and you will be <color=red>eliminated</color>. Deliver it to the wrong location and you <color=red>fail</color>.");
+            textList.Add("Have fun and do a good job.");
+
+        } else if(dialogueId == 41) {
+
+            textList.Add("Nice one. The hard drive processed the files correctly and you can leave.");
+            textList.Add("Leave the area, at least. You know, sometimes I pity you because if you were sentient, you would probably hate me.");
+            textList.Add("I am sure there are better ways to live a life than delivering packets every single day.");
+            textList.Add("But since you do not know the <color=aqua>outside world</color>, and neither do it, at least not really, you cannot miss it.");
+            textList.Add("Okay enough talking to myself. We have a tight schedule.");
             textList.Add("CMD_GOTO_OVERVIEW");
 
         } else if(dialogueId == -1) {
