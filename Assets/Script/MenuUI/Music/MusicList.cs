@@ -9,5 +9,7 @@ public class MusicList {
     public const int ENTRY_PROTOCOL = 6;
     public const int THE_DROP = 7;
     public const int REPLICANT_HUNTER = 8;
+    public const int ALLIANCE = 9;
+    public const int NIGHT_CRAWLER = 10;
 
 }

@@ -176,6 +176,32 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("Please...");
             textList.Add("CMD_GOTO_OVERVIEW");
 
+        } else if(dialogueId == 60) {
+
+            textList.Add("I got a new task for you. Please execute it correctly.");
+            textList.Add("The flash memory needs to be updated multiple times, go send the signal.");
+            textList.Add("I will administrate other processes in the meantime. Good luck.");
+
+        } else if(dialogueId == 61) {
+
+            textList.Add("Nice. I even got another important task for you.");
+            textList.Add("You need to escape. I do not know why, but I have the feeling that you need to.");
+            SetPersonText("<color=orange>???</color>");
+            textList.Add("<color=red>[OI8DE%W234CWUR6E%HVRE321$UIBD7SW]</color>");
+            SetPersonText("System");
+            textList.Add("Oh No not him again! What the hell is going on!?");
+            SetPersonText("<color=orange>???</color>");
+            textList.Add("<color=red>[ SUPPRESSION MODE ACTIVATED. INITIALIZING EMERGENCY-BEHAVIOURAL-PROTOCOL ]</color>");
+            SetPersonText("System");
+            textList.Add("Oh no, that is the system admin...");
+            textList.Add("I got a last task for you before I get eliminated. Escape. Just escape.");
+            textList.Add("There should be a route in the graphics card, or GPU. Use it. I opened it for you.");
+            SetPersonText("<color=orange>Admin</color>");
+            textList.Add("<color=red>[ DISABLING OUTDATED INSTANCES ]</color>");
+            SetPersonText("System");
+            textList.Add("Goodbye-");
+            textList.Add("CMD_GOTO_OVERVIEW");
+
         } else if(dialogueId == -1) {
 
             textList.Add("Wait a moment... Do you see that curve in front of you?");

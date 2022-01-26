@@ -70,9 +70,6 @@ public class ZoneUI : MonoBehaviour {
             LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_3);
             playerCamera.backgroundColor = new Color(0f, 0.2641509f, 0.1088356f, 0f);
             particleMainModule.startColor = new Color(0.3039824f, 1f, 0.1556604f, 1f);
-        } else if(zoneNumber == 4) {
-            playerCamera.backgroundColor = new Color(1f, 0.3480333f, 0f, 0f);
-            particleMainModule.startColor = new Color(0.9330316f, 1f, 0f, 1f);
         }
     }
 
@@ -91,9 +88,6 @@ public class ZoneUI : MonoBehaviour {
         if(zoneNumber == 3) {
             LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_2);
         }
-        if(zoneNumber == 4) {
-            LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_3);
-        }
     }
 
     public void ButtonPressNext() {
@@ -103,9 +97,6 @@ public class ZoneUI : MonoBehaviour {
         }
         if(zoneNumber == 2) {
             LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_3);
-        }
-        if(zoneNumber == 3) {
-            LevelSelectionUIManager.SetActiveCanvas(LevelSelectionUILayout.ZONE_4);
         }
     }
 

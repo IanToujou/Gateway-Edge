@@ -6,7 +6,6 @@ public class LevelSelectionUIManager : MonoBehaviour {
     [SerializeField] private GameObject zoneOneUI;
     [SerializeField] private GameObject zoneTwoUI;
     [SerializeField] private GameObject zoneThreeUI;
-    [SerializeField] private GameObject zoneFourUI;
     [SerializeField] private GameObject exitConfirmationUI;
     
     private static List<GameObject> uiList;
@@ -16,7 +15,6 @@ public class LevelSelectionUIManager : MonoBehaviour {
         uiList.Add(zoneOneUI);
         uiList.Add(zoneTwoUI);
         uiList.Add(zoneThreeUI);
-        uiList.Add(zoneFourUI);
         uiList.Add(exitConfirmationUI);
         SetActiveCanvas(LevelSelectionUILayout.ZONE_1);
     }
