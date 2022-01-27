@@ -104,11 +104,11 @@ public class PlayerController : MonoBehaviour {
                 rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, 0.1f * currentRotationSpeed);
             }
 
-            if(boostingPad) {
+            if(boostingPad && !braking && !boosting) {
                 currentRotationSpeed = boostRotationSpeed;
                 camController.Shake(0.1f, 0.1f, 1f);
                 if(rb.velocity.magnitude <= maxSpeed - 0.1f) {
-                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + acceleration * speedMultiplier * 100));
+                    rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed + acceleration * speedMultiplier * 50));
                     speedMultiplier++;
                 }
                 return;
@@ -168,6 +168,14 @@ public class PlayerController : MonoBehaviour {
                     rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, baseSpeed));
                 }
 
+            }
+
+            if(rb.velocity.magnitude >= maxSpeed + 5f) {
+                rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, maxSpeed + 5f));
+            }
+
+            if(rb.velocity.magnitude <= -1f) {
+                rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, -1f));
             }
 
         }

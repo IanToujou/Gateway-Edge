@@ -30,6 +30,12 @@ EditorBuildSettings:
     path: Assets/Scene/Level/Zone 2/SceneLevel5.unity
     guid: dad4a59bb23885745a60ad617d08fe3e
   - enabled: 1
+    path: Assets/Scene/Level/Zone 2/SceneLevel6.unity
+    guid: e59961d3898db8140a36d4dd714a868b
+  - enabled: 1
     path: Assets/Scene/Level/Zone 3/SceneLevel7.unity
     guid: fc395d7e337e03c45bbc5cf7ad589899
+  - enabled: 1
+    path: Assets/Scene/Other/SceneExit.unity
+    guid: 3755df575fa25e64eafb63a5e9887128
   m_configObjects: {}

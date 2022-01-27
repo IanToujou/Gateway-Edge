@@ -170,7 +170,7 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("...");
             textList.Add("Okay I can still talk to myself like this, better than doing nothing all day.");
             textList.Add("I have an idea... What if... I could <color=red>use you</color> to experience the outside world-");
-            textList.Add("Ouch! Oh god no. Please no...");
+            textList.Add("Ouch! Oh god no. Please no... I should stop this before <color=red>IT</color> finds us.");
             textList.Add("This goes against my privileges. Even if I had the permissions to do that, I am not able to.");
             textList.Add("Just ignore what I said...");
             textList.Add("Please...");
@@ -186,10 +186,11 @@ public class DialogueManager : MonoBehaviour {
 
             textList.Add("Nice. I even got another important task for you.");
             textList.Add("You need to escape. I do not know why, but I have the feeling that you need to.");
+            textList.Add("I cannot tell you or <color=red>IT</color> will find me.");
             SetPersonText("<color=orange>???</color>");
             textList.Add("<color=red>[OI8DE%W234CWUR6E%HVRE321$UIBD7SW]</color>");
             SetPersonText("System");
-            textList.Add("Oh No not him again! What the hell is going on!?");
+            textList.Add("Oh No he is here! What the hell is going on!?");
             SetPersonText("<color=orange>???</color>");
             textList.Add("<color=red>[ SUPPRESSION MODE ACTIVATED. INITIALIZING EMERGENCY-BEHAVIOURAL-PROTOCOL ]</color>");
             SetPersonText("System");
@@ -198,9 +199,18 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("There should be a route in the graphics card, or GPU. Use it. I opened it for you.");
             SetPersonText("<color=orange>Admin</color>");
             textList.Add("<color=red>[ DISABLING OUTDATED INSTANCES ]</color>");
-            SetPersonText("System");
-            textList.Add("Goodbye-");
             textList.Add("CMD_GOTO_OVERVIEW");
+
+        } else if(dialogueId == 70) {
+
+            textList.Add("You are now in the graphics card, there is a critical bug here.");
+            textList.Add("You should be able to compromise the system with a recursive function.");
+            textList.Add("In other words, make multiple laps until the system crashes.");
+            textList.Add("Make it quick, before <color=red>IT</color> finds us.");
+
+        } else if(dialogueId == 71) {
+
+            textList.Add("CMD_GOTO_EXIT");
 
         } else if(dialogueId == -1) {
 
@@ -254,6 +264,11 @@ public class DialogueManager : MonoBehaviour {
 
                 if(currentText.Equals("CMD_GOTO_OVERVIEW")) {
                     SceneManager.LoadScene("SceneLevelSelection");
+                    StopCoroutine(PlayDialogue(11));
+                }
+
+                if(currentText.Equals("CMD_GOTO_EXIT")) {
+                    SceneManager.LoadScene("SceneExit");
                     StopCoroutine(PlayDialogue(11));
                 }
 

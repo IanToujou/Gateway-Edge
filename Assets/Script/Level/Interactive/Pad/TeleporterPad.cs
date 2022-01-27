@@ -3,12 +3,11 @@ using UnityEngine;
 public class TeleporterPad : MonoBehaviour {
 
     [SerializeField] private GameObject destinationTeleporter;
-    private GameObject player;
+    [SerializeField] private GameObject player;
     private LevelManager levelManager;
 
     void Start() {
         levelManager = LevelManager.GetCurrentManager();
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void OnTriggerEnter(Collider collider) {
