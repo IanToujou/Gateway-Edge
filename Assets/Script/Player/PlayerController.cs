@@ -255,6 +255,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void SetAllowRotation(bool allowRotation) {
+        if(!allowRotation) {
+            gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+        }
         this.allowRotation = allowRotation;
     }
 

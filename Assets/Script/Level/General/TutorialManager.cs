@@ -17,7 +17,6 @@ public class TutorialManager : MonoBehaviour {
             playerController.SetAllowBoost(false);
             playerController.SetFailRotation(true);
             playerController.SetTeleportInsteadDeath(true);
-            levelManager.GetPlayer().gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
         } else if(state == 1) {
             playerController.SetAllowRotation(true);
         } else if(state == 2) {
