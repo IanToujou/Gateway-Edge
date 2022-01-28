@@ -4,18 +4,20 @@
 <a href="https://github.com/IanToujou/Gateway-Edge/releases/tag/v0.1.0"><img src="https://img.shields.io/github/downloads/IanToujou/Gateway-Edge/total?color=valid&label=Downloads"></a>
 <a href="https://github.com/IanToujou/Gateway-Edge/releases/tag/v0.1.0"><img src="https://img.shields.io/github/v/release/IanToujou/Gateway-Edge?label=Release"></a>
 
+![GameBanner](https://user-images.githubusercontent.com/44029196/151566935-b6b372b9-9ec8-441d-986f-e46f1baed963.png)
+
 ## Note
 
 *This project is still work in progress!*
 
 ## Features
 
-![Banner](https://user-images.githubusercontent.com/44029196/151562985-cf661132-b092-4a69-aa65-4a3cabab78d8.png)
-
 * Top-Down racing game
 * 7 different levels in 3 zones
 * Interactive objects, items and obstacles
 * A short and small story
+
+![Banner](https://user-images.githubusercontent.com/44029196/151562985-cf661132-b092-4a69-aa65-4a3cabab78d8.png)
 
 ## Guides
 ### Install
