@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour {
     private bool failRotation = false;
 
     void Start() {
+
         cam = FindObjectOfType<Camera>();
         camController = cam.GetComponent<PlayerCamera>();
         rb = GetComponent<Rigidbody>();
@@ -54,6 +55,11 @@ public class PlayerController : MonoBehaviour {
         failRotation = false;
         teleportInsteadDeath = false;
         damageDelayed = false;
+
+        if(LevelManager.GetCurrentManager().GetLevelId().Equals("Level_1")) {
+            gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+        }
+
     }
 
     void Update() {
