@@ -22,9 +22,18 @@
 ## Guides
 ### Install
 
+#### Windows
+
 1. Download the game and unpack it into a folder of your choice.
 2. Start the `Gateway Edge.exe`
 
+#### Linux
+
+_Please be aware that some bugs may occur._ <br>
+_Make sure to have [Wine](https://linuxconfig.org/installing-wine) installed._
+ 
+1. Download the game and unpack it into a folder of your choice.
+1. Open the terminal and type in `wine "Gateway Edge.exe"`.
 
 ## Support
 
