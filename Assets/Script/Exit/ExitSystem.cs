@@ -72,14 +72,14 @@ public class ExitSystem : MonoBehaviour {
         yield return new WaitForSeconds(3);
 
         //Text
-        ShowText(text, "Made by Toujou Studios", 3);
+        ShowText(text, "Made by Toujou Studios", 2);
         yield return new WaitForSeconds(3);
 
         //Delay
         yield return new WaitForSeconds(3);
 
         //Text
-        ShowText(text, "Developer: Ian Bour", 2);
+        ShowText(text, "Developer: Ian Toujou", 2);
         yield return new WaitForSeconds(3);
 
         //Delay
@@ -93,14 +93,14 @@ public class ExitSystem : MonoBehaviour {
         yield return new WaitForSeconds(3);
 
         //Text
-        ShowText(text, "3D Modelling: Ian Bour, Sophie Zheng", 2);
+        ShowText(text, "3D Modelling: Ian Toujou, Sophie Zheng", 2);
         yield return new WaitForSeconds(3);
 
         //Delay
         yield return new WaitForSeconds(3);
 
         //Text
-        ShowText(text, "Story: Ian Bour", 2);
+        ShowText(text, "Story: Ian Toujou", 2);
         yield return new WaitForSeconds(3);
 
         //Delay
