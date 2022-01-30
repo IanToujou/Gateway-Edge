@@ -1,8 +1,9 @@
 # Gateway Edge
-<a href="https://discord.com/invite/eVCWjm38cG"><img src="https://img.shields.io/discord/803708765265985587?color=5865F2&label=Discord&logo=discord&logoColor=white" alt="Discord Server"></a>
-<a href="https://github.com/IanToujou/Gateway-Edge/releases/tag/v0.1.0"><img src="https://img.shields.io/github/license/IanToujou/Gateway-Edge?label=License"></a>
-<a href="https://github.com/IanToujou/Gateway-Edge/releases/tag/v0.1.0"><img src="https://img.shields.io/github/downloads/IanToujou/Gateway-Edge/total?color=valid&label=Downloads"></a>
-<a href="https://github.com/IanToujou/Gateway-Edge/releases/tag/v0.1.0"><img src="https://img.shields.io/github/v/release/IanToujou/Gateway-Edge?label=Release"></a>
+
+[![Discord Server](https://img.shields.io/discord/803708765265985587?color=5865F2&label=Discord&logo=discord&logoColor=white)](https://discord.com/invite/eVCWjm38cG)
+[![Discord Server](https://img.shields.io/github/license/IanToujou/Gateway-Edge?label=License)](https://github.com/IanToujou/Gateway-Edge/releases/tag/latest)
+[![Discord Server](https://img.shields.io/github/downloads/IanToujou/Gateway-Edge/total?color=valid&label=Downloads")](https://github.com/IanToujou/Gateway-Edge/releases/tag/latest)
+[![Discord Server](https://img.shields.io/github/v/release/IanToujou/Gateway-Edge?label=Release)](https://github.com/IanToujou/Gateway-Edge/releases/latest)
 
 ![GameBanner](https://user-images.githubusercontent.com/44029196/151566935-b6b372b9-9ec8-441d-986f-e46f1baed963.png)
 
@@ -20,6 +21,7 @@
 ![Banner](https://user-images.githubusercontent.com/44029196/151562985-cf661132-b092-4a69-aa65-4a3cabab78d8.png)
 
 ## Guides
+
 ### Install
 
 #### Windows
@@ -29,12 +31,13 @@
 
 #### Linux
 
-_Please be aware that some bugs may occur._ <br>
-_Make sure to have [Wine](https://linuxconfig.org/installing-wine) installed._
- 
+_Please be aware that some bugs may occur._  
+_Make sure to have [Wine](https://wiki.winehq.org/Download) installed._
+
 1. Download the game and unpack it into a folder of your choice.
 1. Open the terminal and type in `wine "Gateway Edge.exe"`.
 
 ## Support
 
-If you have any questions or problems regarding this project, you can reach me via any linked social media account on my profile *(https://github.com/IanToujou)*.
+If you have any questions or problems regarding this project, you can reach me
+via any linked social media account on my profile *([https://github.com/IanToujou](https://github.com/IanToujou))*.
