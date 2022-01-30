@@ -153,7 +153,7 @@ public class DialogueManager : MonoBehaviour {
             textList.Add("Nice one. The hard drive processed the files correctly and you can leave.");
             textList.Add("Leave the area, at least. You know, sometimes I pity you because if you were sentient, you would probably hate me.");
             textList.Add("I am sure there are better ways to live a life than delivering packets every single day.");
-            textList.Add("But since you do not know the <color=aqua>outside world</color>, and neither do it, at least not really, you cannot miss it.");
+            textList.Add("But since you do not know the <color=aqua>outside world</color>, and neither do I, at least not really, you cannot miss it.");
             textList.Add("Okay enough talking to myself. We have a tight schedule.");
             textList.Add("CMD_GOTO_OVERVIEW");
 
