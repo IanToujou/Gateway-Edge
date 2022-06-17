@@ -5,7 +5,7 @@
 [![Downloads](https://img.shields.io/github/downloads/IanToujou/Gateway-Edge/total?color=valid&label=Downloads)](https://github.com/IanToujou/Gateway-Edge/releases/tag/latest)
 [![Release](https://img.shields.io/github/v/release/IanToujou/Gateway-Edge?label=Release)](https://github.com/IanToujou/Gateway-Edge/releases/latest)
 
-[**Watch the Trailer**](https://www.youtube.com/watch?v=u24Z5Z3WHRk)
+[Watch the Trailer](https://www.youtube.com/watch?v=u24Z5Z3WHRk)
 
 ![GameBanner](https://user-images.githubusercontent.com/44029196/151566935-b6b372b9-9ec8-441d-986f-e46f1baed963.png)
 
