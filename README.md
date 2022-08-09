@@ -5,17 +5,19 @@
 [![Downloads](https://img.shields.io/github/downloads/IanToujou/Gateway-Edge/total?color=valid&label=Downloads&style=for-the-badge)](https://github.com/IanToujou/Gateway-Edge/releases/tag/latest)
 [![Release](https://img.shields.io/github/v/release/IanToujou/Gateway-Edge?label=Release&style=for-the-badge)](https://github.com/IanToujou/Gateway-Edge/releases/latest)
 
-## TRAILER
+## 🎥 TRAILER
 
 [![Trailer](https://img.shields.io/badge/-Watch%20the%20Trailer-crimson?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=u24Z5Z3WHRk)
 
 ![GameBanner](https://user-images.githubusercontent.com/44029196/151566935-b6b372b9-9ec8-441d-986f-e46f1baed963.png)
 
-## Note
+## 📝 DESCRIPTION
 
-*This project is still work in progress!*
+Gateway Edge is a top-down racing game against time. I did it for a school project, therefore I did not have time to make a fully finished game.
 
-## Features
+This game is heavily inspired by the game Data Wing, available on Android and iOS. You can call this game a cheap copy of Data Wing, but I still uploaded this to Github if anyone wants to try it out and find all the bugs hidden in the game! :D
+
+## 🔥 FEATURES
 
 * Top-Down racing game
 * 7 different levels in 3 zones
@@ -24,7 +26,7 @@
 
 ![Banner](https://user-images.githubusercontent.com/44029196/151562985-cf661132-b092-4a69-aa65-4a3cabab78d8.png)
 
-## Guides
+## 📕 GUIDES
 
 ### Install
 
@@ -41,7 +43,8 @@ _Make sure to have [Wine](https://wiki.winehq.org/Download) installed._
 1. Download the game and unpack it into a folder of your choice.
 1. Open the terminal and type in `wine "Gateway Edge.exe"`.
 
-## Support
+## 🛠️ SUPPORT
 
-If you have any questions or problems regarding this project, you can reach me
-via any linked social media account on my profile *([https://github.com/IanToujou](https://github.com/IanToujou))*.
+If you have any questions or problems regarding this project, you can reach me via any linked social media account on my profile. Just click the button below!
+
+[![Support](https://img.shields.io/badge/-Support-teal?style=for-the-badge&logo=github)](https://github.com/IanToujou)
