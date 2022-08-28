@@ -1,6 +1,6 @@
 # ✨ GATEWAY EDGE
 
-[![Status](https://img.shields.io/badge/-Closed-green?style=for-the-badge&label=Status)](https://github.com/IanToujou/Gateway-Edge)
+[![Status](https://img.shields.io/badge/-Discontinued-yellow?style=for-the-badge&label=Status)](https://github.com/IanToujou/Gateway-Edge)
 [![Licence](https://img.shields.io/github/license/IanToujou/Gateway-Edge?label=License&style=for-the-badge)](https://github.com/IanToujou/Gateway-Edge/releases/tag/latest)
 [![Downloads](https://img.shields.io/github/downloads/IanToujou/Gateway-Edge/total?color=valid&label=Downloads&style=for-the-badge)](https://github.com/IanToujou/Gateway-Edge/releases/tag/latest)
 [![Release](https://img.shields.io/github/v/release/IanToujou/Gateway-Edge?label=Release&style=for-the-badge)](https://github.com/IanToujou/Gateway-Edge/releases/latest)
